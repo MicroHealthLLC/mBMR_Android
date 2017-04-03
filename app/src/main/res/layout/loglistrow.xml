@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+
+   >
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout2"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:layout_below="@+id/slimChart"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:layout_centerHorizontal="true">
+
+
+        <ImageView
+            android:tint="@color/primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/circle"
+            android:id="@+id/imageView3" />
+
+        <TextView
+            android:text="BMI:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:textSize="20sp"
+            android:textColor="@color/secondary_text"
+            android:alpha=".5"
+            android:layout_marginLeft="4dp" />
+
+        <TextView
+            android:text="18"
+            android:id="@+id/bmi"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="normal|bold"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp" />
+
+        <ImageView
+            android:tint="@color/primaryl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/circle"
+            android:id="@+id/imageView2" />
+
+        <TextView
+            android:text="Weight:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/textView3"
+            android:textColor="@color/secondary_text"
+            android:alpha=".5"
+            android:layout_marginLeft="4dp" />
+
+        <TextView
+            android:text="91"
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@color/accentl"
+            app:srcCompat="@drawable/ic_action_action_history"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/slimChart"
+            android:layout_toEndOf="@+id/slimChart"
+            android:id="@+id/imageView" />
+
+
+        <TextView
+            android:text="621"
+            android:id="@+id/datetime"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"
+            android:textStyle="normal|bold"
+            android:layout_marginLeft="4dp" />
+
+
+
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
