@@ -1,6 +1,305 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mylayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".BmrActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/color_blue"
+        android:gravity="center"
+        android:text="BMR Calculator"
+        android:textColor="@color/white"
+        android:textSize="40sp"/>
+
+
+            <LinearLayout android:id="@+id/drawer_layouts"
+                android:orientation="vertical"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/card_margin">
+
+                        <LinearLayout
+                            style="@style/Widget.CardContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:orientation="vertical"
+                                android:paddingTop="5dp">
+
+                                <LinearLayout
+                                    style="@style/Widget.CardContent"
+                                    android:id="@+id/linearLayout2"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:padding="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:layout_below="@+id/slimChart"
+                                    android:layout_centerHorizontal="true">
+
+                                    <ImageView
+                                        android:tint="@color/app_primary_dark"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:srcCompat="@drawable/circle"
+                                        android:id="@+id/imageView3" />
+
+                                    <TextView
+                                        android:text="AGE"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/textView4"
+                                        android:textColor="@android:color/black"
+                                        android:alpha=".5"
+                                        android:layout_marginLeft="6dp" />
+
+                                    <TextView
+                                        android:text="48"
+                                        android:id="@+id/agedisplay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:textStyle="normal|bold"
+                                        android:layout_weight="1"
+                                        android:layout_marginLeft="4dp" />
+
+                                    <ImageView
+                                        android:tint="@color/color_blue"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:srcCompat="@drawable/circle"
+                                        android:id="@+id/imageView2" />
+
+                                    <TextView
+                                        android:text="RHR"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/textView3"
+                                        android:textColor="@android:color/black"
+                                        android:alpha=".5"
+                                        android:layout_marginLeft="6dp" />
+
+                                    <TextView
+                                        android:text="15"
+                                        android:id="@+id/restingHRDisplay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:textStyle="normal|bold"
+                                        android:layout_weight="1"
+                                        android:layout_marginLeft="4dp" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:tint="@color/color_blue"
+                                        app:srcCompat="@drawable/circle"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_toRightOf="@+id/slimChart"
+                                        android:layout_toEndOf="@+id/slimChart"
+                                        android:id="@+id/imageView" />
+
+                                    <TextView
+                                        android:text="MHR"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/textView2"
+                                        android:textColor="@android:color/black"
+                                        android:alpha=".5"
+                                        android:layout_marginLeft="6dp" />
+
+                                    <TextView
+                                        android:text="0.33"
+                                        android:id="@+id/maxHRDisplay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:textStyle="normal|bold"
+                                        android:layout_marginLeft="4dp" />
+
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingTop="10dp"
+                                    android:orientation="horizontal"
+                                    android:layout_gravity="center_horizontal"
+                                   >
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:paddingTop="10dp"
+                                        android:text="I am a"
+                                        android:textSize="12sp" />
+
+                                <com.microhealthllc.bmr_calculator.radio.RadioRealButtonGroup
+                                    android:id="@+id/radioRealButtonGroup_1"
+                                    android:layout_width="200dp"
+                                    android:layout_height="50dp"
+
+                                    android:elevation="0dp"
+                                    app:rrbg_animateDrawables_enter="overshoot"
+                                    app:rrbg_animateDrawables_enterDuration="500"
+                                    app:rrbg_animateDrawables_exit="overshoot"
+                                    app:rrbg_animateDrawables_exitDuration="500"
+                                    app:rrbg_animateDrawables_scale="1.2"
+                                    app:rrbg_animateTexts_enter="overshoot"
+                                    app:rrbg_animateTexts_enterDuration="500"
+                                    app:rrbg_backgroundColor="#FFF"
+                                    app:rrbg_bottomLineColor="@color/blue_300"
+                                    app:rrbg_bottomLineRadius="2dp"
+                                    app:rrbg_bottomLineSize="0dp"
+                                    app:rrbg_buttonsPaddingBottom="8dp"
+                                    app:rrbg_buttonsPaddingTop="8dp"
+                                    app:rrbg_dividerColor="@color/black"
+                                    app:rrbg_dividerPadding="10dp"
+                                    app:rrbg_dividerRadius="2dp"
+                                    app:rrbg_dividerSize="1dp"
+                                    app:rrbg_enableDeselection="true"
+                                    app:rrbg_radius="2dp"
+                                    app:rrbg_selectorAboveOfBottomLine="false"
+                                    app:rrbg_selectorAnimationType="scale_x"
+                                    app:rrbg_selectorColor="@color/primary_darkl"
+                                    app:rrbg_selectorRadius="0dp"
+                                    app:rrbg_selectorSize="6dp">
+
+                                    <com.microhealthllc.bmr_calculator.radio.RadioRealButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:rrb_drawable="@drawable/femalei"
+                                        app:rrb_drawableHeight="20dp"
+                                        app:rrb_drawablePadding="2dp"
+                                        app:rrb_drawableWidth="20dp"
+                                        app:rrb_textSize="11sp"
+                                        app:rrb_rippleColor="@color/black"
+                                        app:rrb_text=" woman"
+                                        app:rrb_textColor="@color/black"
+                                        />
+
+                                    <com.microhealthllc.bmr_calculator.radio.RadioRealButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:rrb_checked="true"
+                                        app:rrb_drawable="@drawable/malei"
+                                        app:rrb_drawableHeight="20dp"
+                                        app:rrb_drawablePadding="2dp"
+                                        app:rrb_drawableWidth="20dp"
+                                        app:rrb_rippleColor="@color/blue_500"
+                                        app:rrb_text=" man"
+                                        app:rrb_textSize="11sp"
+                                        app:rrb_textColor="@color/black"
+                                        />
+
+
+                                </com.microhealthllc.bmr_calculator.radio.RadioRealButtonGroup>
 </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:paddingTop="5dp"
+
+                                    android:orientation="vertical"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_marginTop="16dp"
+                                        android:text="Age"
+                                        android:textSize="12sp" />
+
+                                    <com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleSeekBar
+                                        android:id="@+id/age"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:bsb_progress="58"
+
+                                        app:bsb_second_track_color="@color/color_green"
+                                        app:bsb_show_section_mark="true"
+                                        app:bsb_track_color="@color/color_gray" />
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:padding="5dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Height"
+                                        android:textSize="12sp" />
+
+
+                                    <com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleSeekBar
+                                        android:id="@+id/restingHRSlider"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:bsb_progress="29"
+                                        app:bsb_second_track_color="@color/color_green"
+                                        app:bsb_show_section_mark="true"
+                                        app:bsb_track_color="@color/color_gray" />
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_gravity="center"
+                                        android:layout_height="wrap_content"
+                                        android:text="Weight"
+                                        android:textSize="11sp" />
+
+
+                                    <com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleSeekBar
+                                        android:id="@+id/restingHr"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        app:bsb_progress="29"
+                                        app:bsb_second_track_color="@color/color_green"
+                                        app:bsb_show_section_mark="true"
+                                        app:bsb_track_color="@color/color_gray" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+

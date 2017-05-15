@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package co.ceryle.radiorealbutton.library;
+package com.microhealthllc.bmr_calculator.radio;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -43,10 +43,12 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.microhealthllc.bmr_calculator.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import co.ceryle.radiorealbutton.R;
+
 
 public class RadioRealButtonGroup extends RoundedCornerLayout {
 

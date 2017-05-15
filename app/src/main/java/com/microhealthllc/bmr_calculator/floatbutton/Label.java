@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.floatbutton;
+package com.microhealthllc.bmr_calculator.floatbutton;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.view.animation.Animation;
 import android.widget.TextView;
-
 
 
 public class Label extends TextView {

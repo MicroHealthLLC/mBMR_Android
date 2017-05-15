@@ -1,15 +1,17 @@
-package com.microhealthllc.mbmicalc.ui;
+package com.microhealthllc.bmr_calculator.ui;
 
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.microhealthllc.mbmicalc.log.LogUtil;
+
+import com.microhealthllc.bmr_calculator.log.LogUtil;
 
 import butterknife.ButterKnife;
 
-import static com.microhealthllc.mbmicalc.log.LogUtil.makeLogTag;
+import static com.microhealthllc.bmr_calculator.log.LogUtil.makeLogTag;
+
 
 /**
  * The base class for all fragment classes.

@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc;/*
+package com.microhealthllc.bmr_calculator;/*
  * Copyright Txus Ballesteros 2015 (@txusballesteros)
  *
  * This file is part of some open source application.
@@ -52,14 +52,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.microhealthllc.About;
-import com.microhealthllc.mbmicalc.DB.BmiLogs;
-import com.microhealthllc.mbmicalc.DB.DBHandler;
-import com.microhealthllc.mbmicalc.chart.ColorArcProgressBar;
-import com.microhealthllc.mbmicalc.chart.LineColumnDependencyActivity;
-import com.microhealthllc.mbmicalc.chart.SimpleLineChart;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu;
+
+import com.microhealthllc.bmr_calculator.DB.BmiLogs;
+import com.microhealthllc.bmr_calculator.DB.DBHandler;
+import com.microhealthllc.bmr_calculator.chart.ColorArcProgressBar;
+import com.microhealthllc.bmr_calculator.chart.LineColumnDependencyActivity;
+import com.microhealthllc.bmr_calculator.chart.SimpleLineChart;
+import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton;
+import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.text.DecimalFormat;

@@ -1,13 +1,12 @@
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -21,33 +20,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fenchtose.tooltip.TooltipAnimation;
-import com.microhealthllc.mbmicalc.BasicSettings;
-import com.microhealthllc.mbmicalc.BmiChart;
-import com.microhealthllc.mbmicalc.BmiChartBloodRed;
-import com.microhealthllc.mbmicalc.BmiChartOrange;
-import com.microhealthllc.mbmicalc.BmiChartRed;
-import com.microhealthllc.mbmicalc.BmiChartyellow;
-import com.microhealthllc.mbmicalc.DB.BmiLogs;
-import com.microhealthllc.mbmicalc.DB.DBHandler;
-import com.microhealthllc.mbmicalc.LogActivity;
-import com.microhealthllc.mbmicalc.R;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu;
-
-import com.tooltip.Tooltip;
+import com.microhealthllc.bmr_calculator.BasicSettings;
+import com.microhealthllc.bmr_calculator.BmiChart;
+import com.microhealthllc.bmr_calculator.BmiChartBloodRed;
+import com.microhealthllc.bmr_calculator.BmiChartOrange;
+import com.microhealthllc.bmr_calculator.BmiChartRed;
+import com.microhealthllc.bmr_calculator.BmiChartyellow;
+import com.microhealthllc.bmr_calculator.DB.BmiLogs;
+import com.microhealthllc.bmr_calculator.DB.DBHandler;
+import com.microhealthllc.bmr_calculator.LogActivity;
+import com.microhealthllc.bmr_calculator.R;
+import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip;
 import lecho.lib.hellocharts.gesture.ZoomType;
-import lecho.lib.hellocharts.listener.ColumnChartOnValueSelectListener;
 import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -493,7 +485,7 @@ public class LineColumnDependencyActivity extends ActionBarActivity {
 
 
 
-                new SimpleTooltip.Builder(getActivity())
+              /*  new SimpleTooltip.Builder(getActivity())
                         .anchorView(weightbottomgraph)
                         .text(new String(value.getLabel())+"  weight :"+value.getY())
                         .gravity(Gravity.END)
@@ -506,7 +498,7 @@ public class LineColumnDependencyActivity extends ActionBarActivity {
 
 
                         .build()
-                        .show();
+                        .show();*/
             }
 
                  @Override
@@ -522,7 +514,7 @@ public class LineColumnDependencyActivity extends ActionBarActivity {
                 public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
                     //Toast.makeText(getActivity(), "" + new String(value.getLabel())+"bmi :"+value.getY(), Toast.LENGTH_SHORT).show();
 
-                    new SimpleTooltip.Builder(getActivity())
+                    /*new SimpleTooltip.Builder(getActivity())
                             .anchorView(chartTop)
                             .text(new String(value.getLabel())+" bmi :"+value.getY())
                             .gravity(Gravity.END)
@@ -533,7 +525,7 @@ public class LineColumnDependencyActivity extends ActionBarActivity {
                             .arrowColor(getResources().getColor(R.color.primary))
                             .build()
                             .show();
-
+*/
 
                 }
 

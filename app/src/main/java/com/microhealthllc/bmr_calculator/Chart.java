@@ -1,12 +1,13 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.microhealthllc.mbmicalc.DB.BmiLogs;
-import com.microhealthllc.mbmicalc.DB.DBHandler;
-import com.microhealthllc.mbmicalc.chart.SimpleLineChart;
+
+import com.microhealthllc.bmr_calculator.DB.BmiLogs;
+import com.microhealthllc.bmr_calculator.DB.DBHandler;
+import com.microhealthllc.bmr_calculator.chart.SimpleLineChart;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Chart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.graph);
         db  = new DBHandler(this);
-     SimpleLineChart   mSimpleLineChart = (SimpleLineChart) findViewById(R.id.simpleLineChart);
+     SimpleLineChart mSimpleLineChart = (SimpleLineChart) findViewById(R.id.simpleLineChart);
         String[] xItem = {"1","2","3","4","5","6","7"};
         String[] yItem = {"50","40","30","20","10"};
         if(mSimpleLineChart == null)

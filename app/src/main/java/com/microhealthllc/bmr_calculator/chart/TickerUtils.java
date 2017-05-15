@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.microhealthllc.targetheartratecalculator.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 /**
  * Static utility class for the ticker package. This class contains helper methods such as those

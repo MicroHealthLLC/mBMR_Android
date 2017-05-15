@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -35,7 +35,6 @@ import android.view.View;
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.rengwuxian.materialedittext.Colors;
-
 import com.rengwuxian.materialedittext.validation.METLengthChecker;
 import com.rengwuxian.materialedittext.validation.METValidator;
 

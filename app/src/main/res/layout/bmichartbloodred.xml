@@ -209,7 +209,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content">
 
-            <com.microhealthllc.mbmicalc.chart.ColorArcProgressBar
+            <com.microhealthllc.bmr_calculator.chart.ColorArcProgressBar
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center_horizontal"
@@ -275,7 +275,7 @@
     android:layout_height="wrap_content">
 
 
-    <com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu
+    <com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu
         android:id="@+id/menu_red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -292,7 +292,7 @@
 
         fab:menu_fab_label="">
 
-        <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
+        <com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton
             android:id="@+id/enter_edit_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -303,7 +303,7 @@
             app:fabSize="mini"
             fab:fab_label="enter/edit data" />
 
-        <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
+        <com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton
             android:id="@+id/bmi_graph"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
             style="@style/MenuButtonsStyle"
             fab:fab_label="Activity Monitor" />
 
-        <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
+        <com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton
             android:id="@+id/bmi_logs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -325,7 +325,7 @@
             style="@style/MenuButtonsStyle"
             fab:fab_label="log history" />
 
-    </com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu>
+    </com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu>
 
 </LinearLayout>
 <LinearLayout

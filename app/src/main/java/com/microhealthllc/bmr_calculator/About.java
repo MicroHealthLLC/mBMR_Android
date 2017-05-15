@@ -1,10 +1,7 @@
-package com.microhealthllc;
+package com.microhealthllc.bmr_calculator;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,14 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.text.Spannable;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,21 +18,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.microhealthllc.mbmicalc.BasicSettings;
-import com.microhealthllc.mbmicalc.BmiChart;
-import com.microhealthllc.mbmicalc.BmiChartRed;
-import com.microhealthllc.mbmicalc.DB.DBHandler;
-import com.microhealthllc.mbmicalc.LogActivity;
-import com.microhealthllc.mbmicalc.LogListAdapter;
-import com.microhealthllc.mbmicalc.R;
-import com.microhealthllc.mbmicalc.chart.LineColumnDependencyActivity;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton;
-import com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu;
+import com.microhealthllc.bmr_calculator.DB.DBHandler;
+import com.microhealthllc.bmr_calculator.chart.LineColumnDependencyActivity;
+import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton;
+import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import butterknife.ButterKnife;
-import mehdi.sakout.aboutpage.AboutPage;
-import mehdi.sakout.aboutpage.Element;
 
 /**
  * Created by ubuntuadmin on 3/24/17.

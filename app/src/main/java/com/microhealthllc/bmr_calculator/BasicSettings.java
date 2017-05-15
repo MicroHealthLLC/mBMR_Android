@@ -1,9 +1,10 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,14 +15,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 
-
-import com.microhealthllc.SimpleEula;
-import com.microhealthllc.mbmicalc.BmiChart;
-import com.microhealthllc.mbmicalc.EnterBMIINfo;
-import com.microhealthllc.mbmicalc.EnterBMIINfo_kgm;
-import com.microhealthllc.mbmicalc.R;
+import com.microhealthllc.bmr_calculator.radio.RadioRealButton;
+import com.microhealthllc.bmr_calculator.radio.RadioRealButtonGroup;
 
 public class BasicSettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -38,7 +36,10 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
     SharedPreferences.Editor editor;
     Spinner spinner;
     SharedPreferences  sharedPref;
-
+    RadioButton  male;
+    RadioButton female;
+    private RadioRealButtonGroup rrbg;
+    int genderpossition = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +60,25 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
         adapter.setDropDownViewResource(R.layout.spinnerlayout);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
+        // male = (RadioButton) findViewById(R.id.male);
+      //  female = (RadioButton) findViewById(R.id.female);
         spinner.setOnItemSelectedListener(this);
         //spinner.setItems("Imperial Units: height/ft. in  weight/lbs", "Metric Units: height/m weight/kg");
+        rrbg = (RadioRealButtonGroup) findViewById(R.id.radioRealButtonGroup_1);
+        rrbg.setOnClickedButtonListener(new RadioRealButtonGroup.OnClickedButtonListener() {
+            @Override
+            public void onClickedButton(RadioRealButton button, int position) {
+               // updateText(position);
+                if(position==0){
+                    genderpossition =0;
+
+                }
+                else {
+                    genderpossition =1;
+                }
+            }
+        });
+
 
         metrics = sharedPref.getInt(getString(R.string.metric_settings), 0);
 
@@ -97,6 +114,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
 
     }
 
+
     private void initEditText() {
 
         editweight = (EditText) findViewById(R.id.weight);
@@ -118,6 +136,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                 case R.id.fabdown:
                 {
                     Intent bmiact = new Intent(BasicSettings.this,BmiChart.class );
+                    Intent bmr = new Intent(BasicSettings.this, BmrActivity.class);
                     Intent bmiactyellow = new Intent(BasicSettings.this,BmiChartyellow.class );
                     Intent bmiactorange = new Intent(BasicSettings.this,BmiChartRed.class );
                     Intent bmiactred = new Intent(BasicSettings.this,BmiChartOrange.class );
@@ -135,6 +154,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                             b.putDouble("height", Double.parseDouble(editheightft.getText().toString()));
                             b.putDouble("weight", Double.parseDouble(editweight.getText().toString()));
                             b.putString("username",username.getText().toString());
+                            b.putInt("genderposition",0);
 
                             try {
                                 editor.putString(getString(R.string.metric_height),editheightft.getText().toString());
@@ -144,6 +164,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                                 editor.apply();
                                 editor = sharedPref.edit();
                                 editor.putString(getString(R.string.metric_user_name),username.getText().toString());
+                                editor.putInt("genderposition",0);
                                 editor.apply();
                             }
                             catch (Exception e){
@@ -151,11 +172,14 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                             }
 
                             bmiact.putExtras(b);
+                            bmr.putExtras(b);
                             bmiactorange.putExtras(b);
                             bmiactyellow.putExtras(b);
                             bmiactred.putExtras(b);
                             bmiactbloodred.putExtras(b);
-
+                            startActivity(bmr);
+/*
+                          startActivity(bmiact);
                             Double tempbmi =   calcBMI(Double.parseDouble(editheightft.getText().toString()),Double.parseDouble(editweight.getText().toString()),BasicSettings.this,metrics);
                             if (tempbmi >18.5 &&tempbmi <25){
                                 startActivity(bmiact);
@@ -174,7 +198,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                             else {
                                 Log.i("BMI RESULTS",tempbmi+"");
                                 startActivity(bmiactbloodred);
-                            }
+                            }*/
                         }
                         else {
                             editor = sharedPref.edit();
@@ -199,20 +223,23 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                                 editor.putString(getString(R.string.metric_weight),editweight.getText().toString());
                                 editor.apply();
                                 editor.putString(getString(R.string.metric_inches),editheightin.getText().toString());
+                                editor.putInt("genderposition",0);
                                 editor.apply();
 
                             }
                             catch (Exception e){
                                 Log.i("ErroException",e.toString());
                             }
-
+                            bmr.putExtras(b);
                             bmiact.putExtras(b);
                             bmiactorange.putExtras(b);
                             bmiactyellow.putExtras(b);
                             bmiactred.putExtras(b);
                             bmiactbloodred.putExtras(b);
 
-                            Double tempbmi =   calcBMI(heigtwithinch,Double.parseDouble(editweight.getText().toString()),BasicSettings.this,metrics);
+                            startActivity(bmr);
+
+                     /*       Double tempbmi =   calcBMI(heigtwithinch,Double.parseDouble(editweight.getText().toString()),BasicSettings.this,metrics);
                             if (tempbmi >18.5 &&tempbmi <25){
                                 startActivity(bmiact);
                             }
@@ -230,7 +257,7 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
                                 Log.i("BMI RESULTS",tempbmi+"");
                                 startActivity(bmiactbloodred);
                             }
-
+*/
                         }
 
                         /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -271,6 +298,9 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
             }
         }
     };
+
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -334,4 +364,22 @@ public class BasicSettings extends AppCompatActivity implements AdapterView.OnIt
 
 
     }
+
+  /*  public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            //case R.id.male:
+                if (checked)
+                    // Pirates are the best
+                    break;
+            case R.id.female:
+                if (checked)
+                    // Ninjas rule
+                    break;
+        }
+    }*/
+
 }

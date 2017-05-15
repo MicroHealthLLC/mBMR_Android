@@ -1,4 +1,4 @@
-package com.microhealthllc.targetheartratecalculator.bubbleseekbar;
+package com.microhealthllc.bmr_calculator.bubbleseekbar;
 
 import android.content.res.Resources;
 import android.os.Environment;

@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.log;
+package com.microhealthllc.bmr_calculator.log;
 
 import android.util.Log;
 

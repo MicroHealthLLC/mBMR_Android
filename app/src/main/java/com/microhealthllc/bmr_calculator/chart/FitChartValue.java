@@ -1,5 +1,5 @@
 
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.graphics.Paint;
 

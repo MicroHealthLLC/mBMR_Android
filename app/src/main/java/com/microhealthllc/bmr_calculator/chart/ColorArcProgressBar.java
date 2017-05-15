@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -15,7 +15,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.microhealthllc.mbmicalc.R;
+import com.microhealthllc.bmr_calculator.R;
+
 
 /**
  * colorful arc progress bar

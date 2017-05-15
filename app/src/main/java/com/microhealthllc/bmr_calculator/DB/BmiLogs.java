@@ -1,9 +1,4 @@
-package com.microhealthllc.mbmicalc.DB;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+package com.microhealthllc.bmr_calculator.DB;
 
 /**
  * Created by ubuntuadmin on 3/13/17.

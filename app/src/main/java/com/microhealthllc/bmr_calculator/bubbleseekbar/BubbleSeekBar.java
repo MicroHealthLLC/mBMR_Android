@@ -1,4 +1,4 @@
-package com.microhealthllc.targetheartratecalculator.bubbleseekbar;
+package com.microhealthllc.bmr_calculator.bubbleseekbar;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -29,14 +29,14 @@ import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 
 
-import com.microhealthllc.targetheartratecalculator.R;
+import com.microhealthllc.bmr_calculator.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.math.BigDecimal;
 
-import static com.microhealthllc.targetheartratecalculator.bubbleseekbar.BubbleUtils.dp2px;
-import static com.microhealthllc.targetheartratecalculator.bubbleseekbar.BubbleUtils.sp2px;
+import static com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleUtils.dp2px;
+import static com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleUtils.sp2px;
 
 
 /**

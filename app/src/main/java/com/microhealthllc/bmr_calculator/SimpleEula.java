@@ -1,4 +1,4 @@
-package com.microhealthllc;
+package com.microhealthllc.bmr_calculator;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,8 +16,6 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.webkit.WebView;
-
-import com.microhealthllc.mbmicalc.R;
 
 public class SimpleEula {
 

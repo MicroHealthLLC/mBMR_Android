@@ -22,7 +22,7 @@
  *
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
  */
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.graphics.Path;
 import android.graphics.RectF;

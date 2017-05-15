@@ -1,12 +1,13 @@
-package com.microhealthllc.mbmicalc.ui;
+package com.microhealthllc.bmr_calculator.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.microhealthllc.mbmicalc.DummyContent;
-import com.microhealthllc.mbmicalc.R;
 
-import static com.microhealthllc.mbmicalc.log.LogUtil.makeLogTag;
+import com.microhealthllc.bmr_calculator.R;
+
+import static com.microhealthllc.bmr_calculator.log.LogUtil.makeLogTag;
+
 
 
 /**

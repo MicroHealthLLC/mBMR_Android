@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:background="#FFF"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
 
 
@@ -70,9 +70,9 @@
                         android:text="Display Name"
                         android:textColor="@color/secondary_text"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
-                    <com.microhealthllc.mbmicalc.MaterialEditText
+                    <com.microhealthllc.bmr_calculator.MaterialEditText
                         android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -80,8 +80,8 @@
                         android:text=""
                         android:inputType="textNoSuggestions"
                         android:background="#FFFFFF"
-                        android:padding="5dp"
-                        android:textSize="20sp"
+                        android:padding="4dp"
+                        android:textSize="18sp"
                         android:backgroundTint="@android:color/transparent"
                         app:met_floatingLabel="highlight"
                         app:met_primaryColor="@color/accent"
@@ -90,6 +90,63 @@
                 </LinearLayout>
 
 
+            <LinearLayout
+                style="@style/Widget.CardContentl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:text="Gender"
+                    android:textColor="@color/secondary_text"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                style="@style/Widget.CardContentl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondary_text"
+
+                    android:text="Age"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_height="wrap_content">
+                    <com.microhealthllc.bmr_calculator.MaterialEditText
+
+                        android:id="@+id/age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="age"
+                        android:layout_weight="0.5"
+                        android:maxLength="3"
+                        android:text=""
+                        android:textCursorDrawable="@drawable/text_cursor_cyan"
+                        android:textSize="18sp"
+                        app:met_baseColor="@android:color/black"
+                        app:met_floatingLabel="highlight"
+                        app:met_maxCharacters="3"
+                        android:inputType="numberDecimal"
+                        app:met_primaryColor="@color/accent"
+                        app:met_singleLineEllipsis="true" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
                 <LinearLayout
                     style="@style/Widget.CardContentl"
                     android:layout_width="match_parent"
@@ -100,17 +157,17 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/secondary_text"
                         android:text="Units"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                        android:textSize="15sp"/>
 
 
                     <Spinner
-                        style="@style/Widget.CardContent"
+                        android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/spinner"
                         android:dropDownWidth="match_parent"
-                        android:spinnerMode="dropdown"
-                        android:textSize="20sp"
+                        android:spinnerMode="dialog"
+                        android:textSize="15sp"
                         android:visibility="visible">
 
                     </Spinner>
@@ -126,7 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Height"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                        android:textSize="15sp" />
 
 
                     <LinearLayout
@@ -136,15 +193,16 @@
                         android:weightSum="1"
                         android:layout_height="wrap_content">
 
-                        <com.microhealthllc.mbmicalc.MaterialEditText
+                        <com.microhealthllc.bmr_calculator.MaterialEditText
                             android:id="@+id/height"
                             android:layout_weight="0.25"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="feets"
+
                             android:maxLength="3"
-                            android:textSize="20sp"
+                            android:textSize="15sp"
                             android:text=""
+                            android:hint='height"'
                             android:inputType="numberDecimal"
                             android:textCursorDrawable="@drawable/text_cursor_cyan"
                             app:met_baseColor="@android:color/black"
@@ -153,13 +211,13 @@
                             app:met_primaryColor="@color/accent"
                             app:met_singleLineEllipsis="true"/>
 
-                        <com.microhealthllc.mbmicalc.MaterialEditText
+                        <com.microhealthllc.bmr_calculator.MaterialEditText
                             android:id="@+id/inches"
                             android:layout_weight="0.25"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint='inches"'
-                            android:textSize="18sp"
+                            android:textSize="15sp"
                             android:maxLength="2"
                             android:text=""
                             android:inputType="numberDecimal"
@@ -188,13 +246,13 @@
                         android:textColor="@color/secondary_text"
 
                         android:text="Weight"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:weightSum="1"
                         android:layout_height="wrap_content">
-                    <com.microhealthllc.mbmicalc.MaterialEditText
+                        <com.microhealthllc.bmr_calculator.MaterialEditText
 
                         android:id="@+id/weight"
                         android:layout_width="match_parent"
@@ -204,7 +262,7 @@
                         android:maxLength="3"
                         android:text=""
                         android:textCursorDrawable="@drawable/text_cursor_cyan"
-                        android:textSize="20sp"
+                            android:textSize="15sp"
                         app:met_baseColor="@android:color/black"
                         app:met_floatingLabel="highlight"
                         app:met_maxCharacters="5"

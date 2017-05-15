@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.floatbutton;
+package com.microhealthllc.bmr_calculator.floatbutton;
 
 import android.content.Context;
 import android.os.Build;

@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.DB;
+package com.microhealthllc.bmr_calculator.DB;
 
 /**
  * Created by ubuntuadmin on 3/13/17.
@@ -10,12 +10,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class DBHandler extends SQLiteOpenHelper {
 

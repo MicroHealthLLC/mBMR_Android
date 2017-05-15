@@ -1,14 +1,11 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.preference.PreferenceManager;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -16,11 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.microhealthllc.mbmicalc.chart.SlimChart;
-
-
-import static com.microhealthllc.mbmicalc.R.id.slimChart;
-import static com.microhealthllc.mbmicalc.R.id.weight;
 
 public class EnterBMIINfo extends AppCompatActivity {
     EditText editweight;

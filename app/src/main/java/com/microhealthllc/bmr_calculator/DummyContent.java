@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

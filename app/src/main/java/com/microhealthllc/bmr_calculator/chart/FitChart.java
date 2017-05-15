@@ -22,7 +22,7 @@
  *
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
  */
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -37,7 +37,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.microhealthllc.mbmicalc.R;
+
+import com.microhealthllc.bmr_calculator.R;
 
 import java.util.ArrayList;
 import java.util.Collection;

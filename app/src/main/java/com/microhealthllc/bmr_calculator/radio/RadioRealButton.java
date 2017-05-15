@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package co.ceryle.radiorealbutton.library;
+package com.microhealthllc.bmr_calculator.radio;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -32,7 +32,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import co.ceryle.radiorealbutton.R;
+import com.microhealthllc.bmr_calculator.R;
+
 
 public class RadioRealButton extends LinearLayout {
     public RadioRealButton(Context context) {
@@ -73,19 +74,19 @@ public class RadioRealButton extends LinearLayout {
     private TextView textView;
 
     private void initViews() {
-        setLayoutParams(new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
+        setLayoutParams(new LayoutParams(0, LayoutParams.MATCH_PARENT, 1));
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER);
 
         imageView = new ImageView(getContext());
-        imageView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT) {{
+        imageView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT) {{
             gravity = Gravity.CENTER;
         }});
         setDrawableAttrs();
         addView(imageView);
 
         textView = new TextView(getContext());
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT) {{
+        textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT) {{
             gravity = Gravity.CENTER;
         }});
         setTextAttrs();
@@ -215,7 +216,7 @@ public class RadioRealButton extends LinearLayout {
                 addView(textView, 1);
 
                 if (textFillSpace) {
-                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) textView.getLayoutParams();
+                    LayoutParams params = (LayoutParams) textView.getLayoutParams();
                     params.weight = 0;
                     params.width = LayoutParams.WRAP_CONTENT;
                 }
@@ -226,7 +227,7 @@ public class RadioRealButton extends LinearLayout {
                 addView(imageView, 1);
 
                 if (textFillSpace) {
-                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) textView.getLayoutParams();
+                    LayoutParams params = (LayoutParams) textView.getLayoutParams();
                     params.weight = 1;
                     params.width = 0;
                 }
@@ -473,7 +474,7 @@ public class RadioRealButton extends LinearLayout {
             paddings[g] = drawablePadding / 2;
         }
 
-        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        MarginLayoutParams params = (MarginLayoutParams) view.getLayoutParams();
         params.setMargins(paddings[0], paddings[1], paddings[2], paddings[3]);
     }
 

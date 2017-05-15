@@ -23,7 +23,7 @@
  *
  * Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <declare-styleable name="FitChart">
         <attr name="strokeSize" format="dimension|reference" />
         <attr name="valueStrokeColor" format="color|reference" />
@@ -139,4 +139,272 @@
         <attr name="menu_fab_show_animation" format="reference" />
         <attr name="menu_fab_hide_animation" format="reference" />
     </declare-styleable>
+
+
+    <declare-styleable name="RadioRealButton">
+
+        <attr name="android:enabled"/>
+        <attr name="android:clickable"/>
+        <attr name="android:background"/>
+
+        <attr name="android:padding"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingBottom"/>
+
+        <attr name="rrb_drawable" format="reference"/>
+        <attr name="rrb_drawablePadding" format="dimension"/>
+        <attr name="rrb_drawableTint" format="color"/>
+        <attr name="rrb_drawableWidth" format="dimension"/>
+        <attr name="rrb_drawableHeight" format="dimension"/>
+        <attr name="rrb_drawableGravity" format="integer">
+            <flag name="left" value="0"/>
+            <flag name="top" value="1"/>
+            <flag name="right" value="2"/>
+            <flag name="bottom" value="3"/>
+        </attr>
+
+        <attr name="rrb_text" format="string"/>
+        <attr name="rrb_textColor" format="color"/>
+        <attr name="rrb_textSize" format="dimension"/>
+        <attr name="rrb_textTypeface" format="integer">
+            <flag name="monospace" value="0"/>
+            <flag name="normal" value="1"/>
+            <flag name="sans" value="2"/>
+            <flag name="serif" value="3"/>
+        </attr>
+        <attr name="rrb_textTypefacePath" format="string"/>
+        <attr name="rrb_textFillSpace" format="boolean"/>
+        <attr name="rrb_textStyle" format="integer">
+            <flag name="normal" value="0"/>
+            <flag name="bold" value="1"/>
+            <flag name="italic" value="2"/>
+        </attr>
+        <attr name="rrb_textGravity" format="integer">
+            <flag name="left" value="0"/>
+            <flag name="center" value="1"/>
+            <flag name="right" value="2"/>
+        </attr>
+
+        <attr name="rrb_checked" format="boolean"/>
+        <attr name="rrb_backgroundColor" format="color"/>
+        <attr name="rrb_ripple" format="boolean"/>
+        <attr name="rrb_rippleColor" format="color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="RadioRealButtonGroup">
+
+        <attr name="android:enabled"/>
+        <attr name="android:clickable"/>
+
+        <attr name="android:padding"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:paddingBottom"/>
+
+        <attr name="android:layout_margin"/>
+        <attr name="android:layout_marginLeft"/>
+        <attr name="android:layout_marginTop"/>
+        <attr name="android:layout_marginRight"/>
+        <attr name="android:layout_marginBottom"/>
+
+        <attr name="rrbg_buttonsPadding" format="dimension"/>
+        <attr name="rrbg_buttonsPaddingLeft" format="dimension"/>
+        <attr name="rrbg_buttonsPaddingRight" format="dimension"/>
+        <attr name="rrbg_buttonsPaddingTop" format="dimension"/>
+        <attr name="rrbg_buttonsPaddingBottom" format="dimension"/>
+
+        <attr name="rrbg_radius" format="dimension"/>
+        <attr name="rrbg_backgroundColor" format="color"/>
+        <attr name="rrbg_enableDeselection" format="boolean"/>
+
+        <attr name="rrbg_borderSize" format="dimension"/>
+        <attr name="rrbg_borderColor" format="color"/>
+
+        <attr name="rrbg_dividerSize" format="dimension"/>
+        <attr name="rrbg_dividerPadding" format="dimension"/>
+        <attr name="rrbg_dividerColor" format="color"/>
+        <attr name="rrbg_dividerRadius" format="dimension"/>
+        <attr name="rrbg_dividerBackgroundColor" format="color"/>
+
+        <attr name="rrbg_selectorDividerSize" format="dimension"/>
+        <attr name="rrbg_selectorDividerPadding" format="dimension"/>
+        <attr name="rrbg_selectorDividerColor" format="color"/>
+        <attr name="rrbg_selectorDividerRadius" format="dimension"/>
+        <attr name="rrbg_selectorFullSize" format="boolean"/>
+
+        <attr name="rrbg_bottomLineColor" format="color"/>
+        <attr name="rrbg_bottomLineSize" format="dimension"/>
+        <attr name="rrbg_bottomLineBringToFront" format="boolean"/>
+        <attr name="rrbg_bottomLineRadius" format="dimension"/>
+
+        <attr name="rrbg_selectorTop" format="boolean"/>
+        <attr name="rrbg_selectorBottom" format="boolean"/>
+        <attr name="rrbg_selectorColor" format="color"/>
+        <attr name="rrbg_selectorSize" format="dimension"/>
+        <attr name="rrbg_selectorBringToFront" format="boolean"/>
+        <attr name="rrbg_selectorAboveOfBottomLine" format="boolean"/>
+        <attr name="rrbg_selectorRadius" format="dimension"/>
+
+        <attr name="rrbg_checkedPosition" format="integer"/>
+        <attr name="rrbg_checkedButton" format="reference"/>
+
+        <attr name="rrbg_selectorAnimationType">
+            <flag name="translate_x" value="0"/>
+            <flag name="translate_y" value="1"/>
+            <flag name="scale_x" value="2"/>
+            <flag name="scale_y" value="3"/>
+            <flag name="alpha" value="4"/>
+        </attr>
+
+        <attr name="rrbg_animate" format="boolean"/>
+
+        <attr name="rrbg_animateSelector_delay" format="integer"/>
+        <attr name="rrbg_animateSelector_duration" format="integer"/>
+        <attr name="rrbg_animateSelector" format="integer">
+            <flag name="fastOutSlowIn" value="0"/>
+            <flag name="bounce" value="1"/>
+            <flag name="linear" value="2"/>
+            <flag name="decelerate" value="3"/>
+            <flag name="cycle" value="4"/>
+            <flag name="anticipate" value="5"/>
+            <flag name="accelerateDecelerate" value="6"/>
+            <flag name="accelerate" value="7"/>
+            <flag name="anticipateOvershoot" value="8"/>
+            <flag name="fastOutLinearIn" value="9"/>
+            <flag name="linearOutSlowIn" value="10"/>
+            <flag name="overshoot" value="11"/>
+        </attr>
+
+        <attr name="rrbg_animateDrawables_scale" format="float"/>
+        <attr name="rrbg_animateDrawables_enterDuration" format="integer"/>
+        <attr name="rrbg_animateDrawables_enter" format="integer">
+            <flag name="fastOutSlowIn" value="0"/>
+            <flag name="bounce" value="1"/>
+            <flag name="linear" value="2"/>
+            <flag name="decelerate" value="3"/>
+            <flag name="cycle" value="4"/>
+            <flag name="anticipate" value="5"/>
+            <flag name="accelerateDecelerate" value="6"/>
+            <flag name="accelerate" value="7"/>
+            <flag name="anticipateOvershoot" value="8"/>
+            <flag name="fastOutLinearIn" value="9"/>
+            <flag name="linearOutSlowIn" value="10"/>
+            <flag name="overshoot" value="11"/>
+        </attr>
+        <attr name="rrbg_animateDrawables_exitDuration" format="integer"/>
+        <attr name="rrbg_animateDrawables_exit" format="integer">
+            <flag name="fastOutSlowIn" value="0"/>
+            <flag name="bounce" value="1"/>
+            <flag name="linear" value="2"/>
+            <flag name="decelerate" value="3"/>
+            <flag name="cycle" value="4"/>
+            <flag name="anticipate" value="5"/>
+            <flag name="accelerateDecelerate" value="6"/>
+            <flag name="accelerate" value="7"/>
+            <flag name="anticipateOvershoot" value="8"/>
+            <flag name="fastOutLinearIn" value="9"/>
+            <flag name="linearOutSlowIn" value="10"/>
+            <flag name="overshoot" value="11"/>
+        </attr>
+
+        <attr name="rrbg_animateTexts_scale" format="float"/>
+        <attr name="rrbg_animateTexts_enterDuration" format="integer"/>
+        <attr name="rrbg_animateTexts_enter" format="integer">
+            <flag name="fastOutSlowIn" value="0"/>
+            <flag name="bounce" value="1"/>
+            <flag name="linear" value="2"/>
+            <flag name="decelerate" value="3"/>
+            <flag name="cycle" value="4"/>
+            <flag name="anticipate" value="5"/>
+            <flag name="accelerateDecelerate" value="6"/>
+            <flag name="accelerate" value="7"/>
+            <flag name="anticipateOvershoot" value="8"/>
+            <flag name="fastOutLinearIn" value="9"/>
+            <flag name="linearOutSlowIn" value="10"/>
+            <flag name="overshoot" value="11"/>
+        </attr>
+        <attr name="rrbg_animateTexts_exitDuration" format="integer"/>
+        <attr name="rrbg_animateTexts_exit" format="integer">
+            <flag name="fastOutSlowIn" value="0"/>
+            <flag name="bounce" value="1"/>
+            <flag name="linear" value="2"/>
+            <flag name="decelerate" value="3"/>
+            <flag name="cycle" value="4"/>
+            <flag name="anticipate" value="5"/>
+            <flag name="accelerateDecelerate" value="6"/>
+            <flag name="accelerate" value="7"/>
+            <flag name="anticipateOvershoot" value="8"/>
+            <flag name="fastOutLinearIn" value="9"/>
+            <flag name="linearOutSlowIn" value="10"/>
+            <flag name="overshoot" value="11"/>
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="BubbleSeekBar">
+        <attr name="bsb_min" format="float|reference"/> <!--min < max, default: 0.0f-->
+        <attr name="bsb_max" format="float|reference"/> <!--min < max, default: 100.0f-->
+        <attr name="bsb_progress" format="float|reference"/> <!--real time progress value, default: min-->
+        <attr name="bsb_is_float_type" format="boolean"/> <!--support for float type-->
+        <attr name="bsb_track_size" format="dimension|reference"/> <!--height of right-track(on the right of thumb), default: 2dp-->
+        <!--height of left-track(on the left of thumb), default: 2dp higher than right-track's height-->
+        <attr name="bsb_second_track_size" format="dimension|reference"/>
+        <attr name="bsb_thumb_radius" format="dimension|reference"/> <!--radius of thumb, default: 2dp higher than left-track's height-->
+        <!--radius of thumb when be dragging, default: 2 times of left-track's height-->
+        <attr name="bsb_thumb_radius_on_dragging" format="dimension|reference"/>
+        <attr name="bsb_track_color" format="color|reference"/> <!--color of right-track, default: R.color.colorPrimary-->
+        <attr name="bsb_second_track_color" format="color|reference"/> <!--color of left-track, default: R.color.colorAccent-->
+        <attr name="bsb_thumb_color" format="color|reference"/> <!--color of thumb, default: same as left-track's color-->
+        <attr name="bsb_section_count" format="integer|reference"/> <!--shares of whole progress(max - min), default: 10-->
+        <attr name="bsb_show_section_mark" format="boolean"/> <!--show demarcation points or not, default: false-->
+        <attr name="bsb_auto_adjust_section_mark" format="boolean"/> <!--auto scroll to the nearest section_mark or not, default: false-->
+        <attr name="bsb_show_section_text" format="boolean"/> <!--show section-text or not, default: false-->
+        <attr name="bsb_section_text_size" format="dimension|reference"/> <!--text size of section-text, default: 14sp-->
+        <attr name="bsb_section_text_color" format="color|reference"/> <!--text color of section-text, default: same as right-track's color-->
+        <!--text position of section-text relative to track, sides, bottom_sides, below_section_mark, default: sides-->
+        <attr name="bsb_section_text_position">
+            <enum name="sides" value="0"/>
+            <enum name="bottom_sides" value="1"/>
+            <enum name="below_section_mark" value="2"/>
+        </attr>
+        <attr name="bsb_section_text_interval" format="integer"/> <!--the interval of two section-text, default: 1-->
+        <attr name="bsb_show_thumb_text" format="boolean"/> <!--show real time progress-text under thumb or not, default: false-->
+        <attr name="bsb_thumb_text_size" format="dimension|reference"/> <!--text size of progress-text, default: 14sp-->
+        <attr name="bsb_thumb_text_color" format="color|reference"/> <!--text color of progress-text, default: same as left-track's color-->
+        <attr name="bsb_show_progress_in_float" format="boolean"/> <!--show bubble-progress in float or not, default: false-->
+        <attr name="bsb_touch_to_seek" format="boolean"/> <!--touch anywhere on track to quickly seek, default: false-->
+        <attr name="bsb_seek_by_section" format="boolean"/> <!--seek by section, the progress may not be linear, default: false-->
+        <attr name="bsb_bubble_color" format="color|reference"/> <!--color of bubble, default: same as left-track's color-->
+        <attr name="bsb_bubble_text_size" format="dimension|reference"/> <!--text size of bubble-progress, default: 14sp-->
+        <attr name="bsb_bubble_text_color" format="color|reference"/> <!--text color of bubble-progress, default: #ffffffff-->
+        <attr name="bsb_anim_duration" format="integer"/> <!--duration of animation, default: 200ms-->
+        <attr name="bsb_always_show_bubble" format="boolean"/> <!--bubble shows all time, default: false-->
+    </declare-styleable>
+
+
+    <declare-styleable name="ticker_TickerView">
+        <attr name="ticker_animationDuration" format="reference|integer" />
+        <attr name="ticker_animateMeasurementChange" format="reference|boolean" />
+
+        <!-- Custom implementations of common android text attributes -->
+        <attr name="android:gravity" tools:ignore="ResourceName" />
+        <attr name="android:shadowColor" tools:ignore="ResourceName" />
+        <attr name="android:shadowDx" tools:ignore="ResourceName" />
+        <attr name="android:shadowDy" tools:ignore="ResourceName" />
+        <attr name="android:shadowRadius" tools:ignore="ResourceName" />
+        <attr name="android:textAppearance" tools:ignore="ResourceName" />
+        <attr name="android:textColor" tools:ignore="ResourceName" />
+        <attr name="android:textSize" tools:ignore="ResourceName" />
+        <attr name="android:textStyle" tools:ignore="ResourceName" />
+    </declare-styleable>
+
+
+    <declare-styleable name="AvatarView">
+        <attr name="avatar" format="reference" />
+    </declare-styleable>
+
 </resources>

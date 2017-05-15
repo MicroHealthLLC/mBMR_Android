@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.floatbutton;
+package com.microhealthllc.bmr_calculator.floatbutton;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -35,7 +35,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 
 
 public class FloatingActionButton extends ImageButton {
@@ -776,8 +775,8 @@ public class FloatingActionButton extends ImageButton {
             out.writeInt(this.mShowProgressBackground ? 1 : 0);
         }
 
-        public static final Parcelable.Creator<ProgressSavedState> CREATOR =
-                new Parcelable.Creator<ProgressSavedState>() {
+        public static final Creator<ProgressSavedState> CREATOR =
+                new Creator<ProgressSavedState>() {
                     public ProgressSavedState createFromParcel(Parcel in) {
                         return new ProgressSavedState(in);
                     }

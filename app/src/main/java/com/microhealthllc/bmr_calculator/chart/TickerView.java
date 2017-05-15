@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.microhealthllc.targetheartratecalculator.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -37,7 +37,8 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 
-import com.microhealthllc.targetheartratecalculator.R;
+import com.microhealthllc.bmr_calculator.R;
+
 
 /**
  * The primary view for showing a ticker text view that handles smoothly scrolling from the

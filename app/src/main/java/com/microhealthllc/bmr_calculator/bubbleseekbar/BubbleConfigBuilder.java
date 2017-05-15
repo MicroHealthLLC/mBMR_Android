@@ -1,10 +1,10 @@
-package com.microhealthllc.targetheartratecalculator.bubbleseekbar;
+package com.microhealthllc.bmr_calculator.bubbleseekbar;
 
 import android.support.annotation.ColorInt;
 import android.support.annotation.IntRange;
 
-import static com.microhealthllc.targetheartratecalculator.bubbleseekbar.BubbleUtils.dp2px;
-import static com.microhealthllc.targetheartratecalculator.bubbleseekbar.BubbleUtils.sp2px;
+import static com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleUtils.dp2px;
+import static com.microhealthllc.bmr_calculator.bubbleseekbar.BubbleUtils.sp2px;
 
 
 /**

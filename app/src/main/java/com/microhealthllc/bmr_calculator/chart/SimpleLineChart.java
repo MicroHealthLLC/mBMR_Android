@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.content.Context;
 import android.graphics.Canvas;

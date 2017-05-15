@@ -1,4 +1,4 @@
-package com.microhealthllc.targetheartratecalculator.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import java.util.ArrayList;
 import java.util.List;

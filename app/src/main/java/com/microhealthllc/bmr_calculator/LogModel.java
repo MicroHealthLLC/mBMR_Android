@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 /**
  * Created by dan on 3/20/17.

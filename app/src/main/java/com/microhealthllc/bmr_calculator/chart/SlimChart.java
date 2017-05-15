@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -18,7 +18,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
-import com.microhealthllc.mbmicalc.R;
+import com.microhealthllc.bmr_calculator.R;
+
 
 public class SlimChart extends View {
     private static final float DEFAULT_SIZE = 100;

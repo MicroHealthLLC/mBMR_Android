@@ -1,4 +1,4 @@
-package com.microhealthllc.mbmicalc;
+package com.microhealthllc.bmr_calculator;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

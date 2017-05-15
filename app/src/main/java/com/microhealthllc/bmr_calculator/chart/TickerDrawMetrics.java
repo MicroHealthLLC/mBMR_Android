@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.microhealthllc.targetheartratecalculator.chart;
+package com.microhealthllc.bmr_calculator.chart;
 
 import android.graphics.Paint;
 
