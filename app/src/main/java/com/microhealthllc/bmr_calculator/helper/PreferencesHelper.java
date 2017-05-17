@@ -31,7 +31,10 @@ public class PreferencesHelper {
 
     private static final String PLAYER_PREFERENCES = "playerPreferences";
     private static final String PREFERENCE_FIRST_NAME = PLAYER_PREFERENCES + ".firstName";
-    private static final String PREFERENCE_LAST_INITIAL = PLAYER_PREFERENCES + ".lastInitial";
+    private static final String PREFERENCE_AGE = PLAYER_PREFERENCES + ".age";
+    private static final String PREFERENCE_HEIGHT = PLAYER_PREFERENCES + ".height";
+    private static final String PREFERENCE_WEIGHT = PLAYER_PREFERENCES + ".weight";
+    private static final String PREFERENCE_IS_FEMALE = PLAYER_PREFERENCES + ".isfemale";
     private static final String PREFERENCE_AVATAR = PLAYER_PREFERENCES + ".avatar";
 
     private PreferencesHelper() {
@@ -42,7 +45,10 @@ public class PreferencesHelper {
     public static void writeToPreferences(Context context, Player player) {
         SharedPreferences.Editor editor = getEditor(context);
         editor.putString(PREFERENCE_FIRST_NAME, player.getFirstName());
-        editor.putString(PREFERENCE_LAST_INITIAL, player.getLastInitial());
+        editor.putString(PREFERENCE_AGE, player.getAge());
+        editor.putString(PREFERENCE_HEIGHT, player.getHeight());
+        editor.putString(PREFERENCE_WEIGHT, player.getWeight());
+        editor.putBoolean(PREFERENCE_IS_FEMALE, player.getIsfemale());
         editor.putString(PREFERENCE_AVATAR, player.getAvatar().name());
         editor.apply();
     }
@@ -56,7 +62,10 @@ public class PreferencesHelper {
     public static Player getPlayer(Context context) {
         SharedPreferences preferences = getSharedPreferences(context);
         final String firstName = preferences.getString(PREFERENCE_FIRST_NAME, null);
-        final String lastInitial = preferences.getString(PREFERENCE_LAST_INITIAL, null);
+        final String age = preferences.getString(PREFERENCE_AGE, null);
+        final String height = preferences.getString(PREFERENCE_HEIGHT, null);
+        final String weight = preferences.getString(PREFERENCE_WEIGHT, null);
+        final boolean isfemale = preferences.getBoolean(PREFERENCE_IS_FEMALE, false);
         final String avatarPreference = preferences.getString(PREFERENCE_AVATAR, null);
         final Avatar avatar;
         if (null != avatarPreference) {
@@ -65,10 +74,10 @@ public class PreferencesHelper {
             avatar = null;
         }
 
-        if (null == firstName || null == lastInitial || null == avatar) {
+        if (null == firstName || null == age || null == height ||null == weight|| null == avatar ) {
             return null;
         }
-        return new Player(firstName, lastInitial, avatar);
+        return new Player(firstName, age,height,weight,isfemale, avatar);
     }
 
     /**
@@ -79,7 +88,10 @@ public class PreferencesHelper {
     public static void signOut(Context context) {
         SharedPreferences.Editor editor = getEditor(context);
         editor.remove(PREFERENCE_FIRST_NAME);
-        editor.remove(PREFERENCE_LAST_INITIAL);
+        editor.remove(PREFERENCE_AGE);
+        editor.remove(PREFERENCE_HEIGHT);
+        editor.remove(PREFERENCE_WEIGHT);
+        editor.remove(PREFERENCE_IS_FEMALE);
         editor.remove(PREFERENCE_AVATAR);
         editor.apply();
     }
@@ -93,7 +105,7 @@ public class PreferencesHelper {
     public static boolean isSignedIn(Context context) {
         final SharedPreferences preferences = getSharedPreferences(context);
         return preferences.contains(PREFERENCE_FIRST_NAME) &&
-                preferences.contains(PREFERENCE_LAST_INITIAL) &&
+                preferences.contains(PREFERENCE_AGE) &&
                 preferences.contains(PREFERENCE_AVATAR);
     }
 
@@ -101,11 +113,11 @@ public class PreferencesHelper {
      * Checks whether the player's input data is valid.
      *
      * @param firstName   The player's first name to be examined.
-     * @param lastInitial The player's last initial to be examined.
+     * @param age The player's last initial to be examined.
      * @return <code>true</code> if both strings are not null nor 0-length, else <code>false</code>.
      */
-    public static boolean isInputDataValid(CharSequence firstName, CharSequence lastInitial) {
-        return !TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastInitial);
+    public static boolean isInputDataValid(CharSequence firstName, CharSequence age, CharSequence height, CharSequence weight) {
+        return !TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(age) && !TextUtils.isEmpty(height)&& !TextUtils.isEmpty(weight) ;
     }
 
     private static SharedPreferences.Editor getEditor(Context context) {

@@ -36,6 +36,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 ;import com.microhealthllc.bmr_calculator.R;
 import com.microhealthllc.bmr_calculator.adapter.AvatarAdapter;
@@ -57,6 +58,7 @@ public class SignInFragment extends Fragment {
     private EditText mAge;
     private EditText mHeight;
     private EditText mWeight;
+    private RadioGroup gender;
 
     private Avatar mSelectedAvatar;
     private View mSelectedAvatarView;
@@ -168,6 +170,7 @@ public class SignInFragment extends Fragment {
         mWeight.addTextChangedListener(textWatcher);
         mHeight = (EditText) view.findViewById(R.id.height);
         mHeight.addTextChangedListener(textWatcher);
+        gender = (RadioGroup) view.findViewById(R.id.gender) ;
 
         mDoneFab = (FloatingActionButton) view.findViewById(R.id.done);
         mDoneFab.setOnClickListener(new View.OnClickListener() {
@@ -281,7 +284,7 @@ public class SignInFragment extends Fragment {
     }
 
     private boolean isInputDataValid() {
-        return PreferencesHelper.isInputDataValid(mFirstName.getText(), mLastInitial.getText());
+        return PreferencesHelper.isInputDataValid(mFirstName.getText(), mAge.getText(),mHeight.getText(),mWeight.getText());
     }
 
     /**
