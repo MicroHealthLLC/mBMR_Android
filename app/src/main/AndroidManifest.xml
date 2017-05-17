@@ -24,28 +24,22 @@
         <activity android:name=".EnterBMIINfo_kgm" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"></activity>
+        <activity
+            android:name=".newactivities.SignInActivity"
+            android:theme="@style/Topeka.SignInActivity"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-<activity android:name=".newactivities.SignInActivity"
-    android:theme="@style/Topeka.SignInActivity"
-    android:windowSoftInputMode="adjustPan">
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-
-</activity>
         <activity
             android:name=".BmrActivity"
             android:label="@string/title_activity_bmr"
-
-            android:theme="@style/Theme.Main.NoActionBar">
-
-
-
-        </activity>
+            android:theme="@style/Theme.Main.NoActionBar"></activity>
+        <activity android:name=".newactivities.BMrDisplayActivity"></activity>
     </application>
 
 </manifest>

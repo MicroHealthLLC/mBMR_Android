@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity">
+    android:orientation="vertical"
+    tools:context="com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <FrameLayout android:id="@+id/category_container"
+        android:layout_width="395dp"
+        android:layout_height="587dp"
+        tools:context="newactivities.BMrDisplayActivity"
+        tools:ignore="MergeRootFrame"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        </FrameLayout>
+</LinearLayout>

@@ -45,6 +45,7 @@ import com.microhealthllc.bmr_calculator.helper.TransitionHelper;
 import com.microhealthllc.bmr_calculator.model.Avatar;
 import com.microhealthllc.bmr_calculator.model.Player;
 
+import com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity;
 import com.microhealthllc.bmr_calculator.widget.TransitionListenerAdapter;
 
 public class SignInFragment extends Fragment {
@@ -53,7 +54,10 @@ public class SignInFragment extends Fragment {
     private static final String KEY_SELECTED_AVATAR_INDEX = "selectedAvatarIndex";
     private Player mPlayer;
     private EditText mFirstName;
-    private EditText mLastInitial;
+    private EditText mAge;
+    private EditText mHeight;
+    private EditText mWeight;
+
     private Avatar mSelectedAvatar;
     private View mSelectedAvatarView;
     private GridView mAvatarGrid;
@@ -110,14 +114,14 @@ public class SignInFragment extends Fragment {
         checkIsInEditMode();
 
         if (mPlayer == null || edit) {
-            view.findViewById(R.id.empty).setVisibility(View.GONE);
-            view.findViewById(R.id.content).setVisibility(View.VISIBLE);
+          //  view.findViewById(R.id.empty).setVisibility(View.GONE);
+           // view.findViewById(R.id.content).setVisibility(View.VISIBLE);
             initContentViews(view);
-            initContents();
+         //   initContents();
         } else {
             final Activity activity = getActivity();
            // CategorySelectionActivity.start(activity, mPlayer);
-            activity.finish();
+           // activity.finish();
         }
         super.onViewCreated(view, savedInstanceState);
     }
@@ -158,8 +162,13 @@ public class SignInFragment extends Fragment {
 
         mFirstName = (EditText) view.findViewById(R.id.first_name);
         mFirstName.addTextChangedListener(textWatcher);
-        mLastInitial = (EditText) view.findViewById(R.id.last_initial);
-        mLastInitial.addTextChangedListener(textWatcher);
+         mAge = (EditText) view.findViewById(R.id.last_initial);
+         mAge.addTextChangedListener(textWatcher);
+        mWeight =(EditText) view.findViewById(R.id.weight);
+        mWeight.addTextChangedListener(textWatcher);
+        mHeight = (EditText) view.findViewById(R.id.height);
+        mHeight.addTextChangedListener(textWatcher);
+
         mDoneFab = (FloatingActionButton) view.findViewById(R.id.done);
         mDoneFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,7 +232,7 @@ public class SignInFragment extends Fragment {
             // Don't run a transition if the passed view is null
             //CategorySelectionActivity.start(activity, mPlayer);
             //activity.finish();
-            Toast.makeText(getActivity(), "Activity start",Toast.LENGTH_SHORT).show();
+            BMrDisplayActivity.start(activity,mPlayer);
             return;
         }
 
@@ -232,7 +241,7 @@ public class SignInFragment extends Fragment {
                     new TransitionListenerAdapter() {
                         @Override
                         public void onTransitionEnd(Transition transition) {
-                            activity.finish();
+
                         }
                     });
 
@@ -241,16 +250,16 @@ public class SignInFragment extends Fragment {
             @SuppressWarnings("unchecked")
             ActivityOptionsCompat activityOptions = ActivityOptionsCompat
                     .makeSceneTransitionAnimation(activity, pairs);
-           // CategorySelectionActivity.start(activity, mPlayer, activityOptions);
-            Toast.makeText(getActivity(), "Activity start",Toast.LENGTH_SHORT).show();
+            BMrDisplayActivity.start(activity, mPlayer, activityOptions);
+           // Toast.makeText(getActivity(), "Activity start",Toast.LENGTH_SHORT).show();
         }
     }
 
     private void initContents() {
         assurePlayerInit();
         if (mPlayer != null) {
-            mFirstName.setText(mPlayer.getFirstName());
-            mLastInitial.setText(mPlayer.getLastInitial());
+        //    mFirstName.setText(mPlayer.getFirstName());
+         //   mLastInitial.setText(mPlayer.getLastInitial());
             mSelectedAvatar = mPlayer.getAvatar();
         }
     }
@@ -262,7 +271,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void savePlayer(Activity activity) {
-        mPlayer = new Player(mFirstName.getText().toString(), mLastInitial.getText().toString(),
+        mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight.getText().toString(),mWeight.getText().toString()
                 mSelectedAvatar);
         PreferencesHelper.writeToPreferences(activity, mPlayer);
     }

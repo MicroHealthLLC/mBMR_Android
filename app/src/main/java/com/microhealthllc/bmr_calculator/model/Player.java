@@ -36,18 +36,25 @@ public class Player implements Parcelable {
         }
     };
     private final String mFirstName;
-    private final String mLastInitial;
+    private final String age;
     private final Avatar mAvatar;
+    private String height;
+    private boolean isfemale;
+    private String weight;
 
-    public Player(String firstName, String lastInitial, Avatar avatar) {
-        mFirstName = firstName;
-        mLastInitial = lastInitial;
-        mAvatar = avatar;
+
+    public Player(String firstName,String mAge,String height, String weight, boolean isfemale,Avatar avatar) {
+        this.mFirstName = firstName;
+        this.age = mAge;
+        this.height = height;
+        this.mAvatar = avatar;
+        this.weight = weight;
+        this.isfemale =isfemale;
     }
 
     protected Player(Parcel in) {
         mFirstName = in.readString();
-        mLastInitial = in.readString();
+        age = in.readString();
         mAvatar = Avatar.values()[in.readInt()];
     }
 
@@ -55,8 +62,17 @@ public class Player implements Parcelable {
         return mFirstName;
     }
 
-    public String getLastInitial() {
-        return mLastInitial;
+    public String getAge(){
+        return age;
+    }
+    public String getHeight(){
+        return this.height;
+    }
+    public String getWeight(){
+        return this.weight;
+    }
+    public boolean getIsfemale(){
+        return this.isfemale;
     }
 
     public Avatar getAvatar() {
@@ -71,7 +87,10 @@ public class Player implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mFirstName);
-        dest.writeString(mLastInitial);
+        dest.writeString(age);
+        dest.writeString(height);
+        dest.writeString(weight);
+
         dest.writeInt(mAvatar.ordinal());
     }
 
@@ -93,7 +112,7 @@ public class Player implements Parcelable {
         if (!mFirstName.equals(player.mFirstName)) {
             return false;
         }
-        if (!mLastInitial.equals(player.mLastInitial)) {
+        if (!age.equals(player.age)) {
             return false;
         }
 
@@ -103,7 +122,7 @@ public class Player implements Parcelable {
     @Override
     public int hashCode() {
         int result = mFirstName.hashCode();
-        result = 31 * result + mLastInitial.hashCode();
+        result = 31 * result + age.hashCode();
         result = 31 * result + mAvatar.hashCode();
         return result;
     }

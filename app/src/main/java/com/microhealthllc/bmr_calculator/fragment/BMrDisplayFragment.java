@@ -18,7 +18,7 @@ import com.microhealthllc.bmr_calculator.R;
  * Use the {@link BMrDisplayFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BMrDisplayFragment extends Fragment {
+public class BMrDisplayFragment extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +33,9 @@ public class BMrDisplayFragment extends Fragment {
     public BMrDisplayFragment() {
         // Required empty public constructor
     }
-
+    public static BMrDisplayFragment newInstance() {
+        return new BMrDisplayFragment();
+    }
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -75,22 +77,7 @@ public class BMrDisplayFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
     /**
      * This interface must be implemented by activities that contain this
