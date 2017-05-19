@@ -27,14 +27,17 @@ import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.R;
 import com.microhealthllc.bmr_calculator.adapter.AvatarAdapter;
@@ -60,10 +63,15 @@ public class SignInFragment extends Fragment {
     private EditText mWeight;
     private EditText mHeight;
 
-    private Avatar mSelectedAvatar;
+    public Avatar mSelectedAvatar;
     private View mSelectedAvatarView;
     private GridView mAvatarGrid;
     private FloatingActionButton mDoneFab;
+    String player_firstname;
+    String player_age;
+    String player_weight;
+    String player_height;
+
     private boolean edit;
 
     public static SignInFragment newInstance(boolean edit) {
@@ -124,10 +132,10 @@ public class SignInFragment extends Fragment {
        // assurePlayerInit();
         checkIsInEditMode();
 
-
+        view.findViewById(R.id.content).setVisibility(View.VISIBLE);
         initContentViews(view);
         initContents();
-
+        isInputEmpty();
 
         super.onViewCreated(view, savedInstanceState);
 
@@ -148,11 +156,16 @@ public class SignInFragment extends Fragment {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 /* no-op */
+              //  mDoneFab.setVisibility(getView().VISIBLE);
+               // mDoneFab.show();
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // hiding the floating action button if text is empty
+                if (s.length() == 0) {
+                   mDoneFab.hide();
+                }
 
             }
 
@@ -180,17 +193,15 @@ public class SignInFragment extends Fragment {
                 switch (v.getId()) {
                     case R.id.done:
                         savePlayer(getActivity());
-                        removeDoneFab(new Runnable() {
-                            @Override
-                            public void run() {
+                        isInputEmpty();
+
                                 if (null == mSelectedAvatarView) {
                                     performSignInWithTransition(mAvatarGrid.getChildAt(
                                             mSelectedAvatar.ordinal()));
                                 } else {
                                     performSignInWithTransition(mSelectedAvatarView);
                                 }
-                            }
-                        });
+
                         break;
                     default:
                         throw new UnsupportedOperationException(
@@ -211,6 +222,9 @@ public class SignInFragment extends Fragment {
                 .setInterpolator(new FastOutSlowInInterpolator())
                 .withEndAction(endAction)
                 .start();
+         mDoneFab.setVisibility(getView().VISIBLE);
+
+
     }
 
     private void setUpGridView(View container) {
@@ -223,9 +237,11 @@ public class SignInFragment extends Fragment {
                 mSelectedAvatarView = view;
                 mSelectedAvatar = Avatar.values()[position];
                 // showing the floating action button if input data is valid
+                Toast.makeText(getActivity(), "selected avatar pos: "+position, Toast.LENGTH_SHORT).show();
                 if (isInputDataValid()) {
                     mDoneFab.show();
                 }
+
             }
         });
         mAvatarGrid.setNumColumns(calculateSpanCount());
@@ -239,17 +255,19 @@ public class SignInFragment extends Fragment {
         assurePlayerInit();
         if (v == null || ApiLevelHelper.isLowerThan(Build.VERSION_CODES.LOLLIPOP)) {
             // Don't run a transition if the passed view is null
+           // savePlayer(getActivity());
        BMrDisplayActivity.start(activity, mPlayer);
-         //   activity.finish();
+         // activity.finish();
             return;
         }
 
         if (ApiLevelHelper.isAtLeast(Build.VERSION_CODES.LOLLIPOP)) {
+
             activity.getWindow().getSharedElementExitTransition().addListener(
                     new TransitionListenerAdapter() {
                         @Override
                         public void onTransitionEnd(Transition transition) {
-                            //activity.finish();
+                           // activity.finish();
                         }
                     });
 
@@ -258,6 +276,7 @@ public class SignInFragment extends Fragment {
             @SuppressWarnings("unchecked")
             ActivityOptionsCompat activityOptions = ActivityOptionsCompat
                     .makeSceneTransitionAnimation(activity, pairs);
+           // savePlayer(getActivity());
           BMrDisplayActivity.start(activity, mPlayer, activityOptions);
         }
     }
@@ -280,8 +299,10 @@ public class SignInFragment extends Fragment {
     }
 
     private void savePlayer(Activity activity) {
+
         mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight.getText().toString(),mWeight.getText().toString(),false,
                 mSelectedAvatar);
+        Log.i("MyMplayer",""+mPlayer.getAvatar().getDrawableId());
         PreferencesHelper.writeToPreferences(activity, mPlayer);
     }
 
@@ -289,15 +310,25 @@ public class SignInFragment extends Fragment {
         return mSelectedAvatarView != null || mSelectedAvatar != null;
     }
 
-    private boolean isInputDataValid() {
-        return PreferencesHelper.isInputDataValid(mFirstName.getText().toString(), mAge.getText().toString(), mHeight.getText().toString(),mWeight.getText().toString());
+    public void isInputEmpty(){
+        player_firstname = mFirstName.getText().toString();
+        player_age = mAge.getText().toString();
+        player_height = mHeight.getText().toString();
+        player_weight = mWeight.getText().toString();
     }
+   /* private boolean isInputDataValid() {
+        return PreferencesHelper.isInputDataValid(mFirstName.getText().toString(), mAge.getText().toString(), mHeight.getText().toString(),mWeight.getText().toString());
+    }*/
+
 
     /**
      * Calculates spans for avatars dynamically.
      *
      * @return The recommended amount of columns.
      */
+    private boolean isInputDataValid() {
+        return PreferencesHelper.isInputDataValid(mFirstName.getText(), mAge.getText(),mHeight.getText().toString(), mWeight.getText().toString());
+    }
     private int calculateSpanCount() {
         int avatarSize = getResources().getDimensionPixelSize(R.dimen.size_fab);
         int avatarPadding = getResources().getDimensionPixelSize(R.dimen.spacing_double);

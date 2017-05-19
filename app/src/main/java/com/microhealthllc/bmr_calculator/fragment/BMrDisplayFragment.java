@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.R;
+import com.microhealthllc.bmr_calculator.helper.PreferencesHelper;
 import com.microhealthllc.bmr_calculator.model.Player;
 import com.microhealthllc.bmr_calculator.widget.AvatarView;
 
@@ -86,7 +89,7 @@ public class BMrDisplayFragment extends Fragment  {
         }
 
         avatar  = (AvatarView) getActivity().findViewById(R.id.avatar);
-        avatar.setAvatar(player.getAvatar().getDrawableId());
+        setAvatarDrawable(avatar);
     }
 
     @Override
@@ -120,5 +123,16 @@ public class BMrDisplayFragment extends Fragment  {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void setAvatarDrawable(AvatarView avatarView) {
+        Player player = PreferencesHelper.getPlayer(getActivity());
+        avatarView.setAvatar(player.getAvatar().getDrawableId());
+        ViewCompat.animate(avatarView)
+                .setInterpolator(new FastOutLinearInInterpolator())
+                .setStartDelay(500)
+                .scaleX(1)
+                .scaleY(1)
+                .start();
     }
 }
