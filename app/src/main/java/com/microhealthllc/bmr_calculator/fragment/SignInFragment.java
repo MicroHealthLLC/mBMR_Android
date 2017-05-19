@@ -19,6 +19,7 @@ package com.microhealthllc.bmr_calculator.fragment;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 
@@ -59,7 +60,7 @@ public class SignInFragment extends Fragment {
     private EditText mHeight;
     private EditText mWeight;
     private RadioGroup gender;
-
+    boolean isfemale =false;
     private Avatar mSelectedAvatar;
     private View mSelectedAvatarView;
     private GridView mAvatarGrid;
@@ -171,7 +172,18 @@ public class SignInFragment extends Fragment {
         mHeight = (EditText) view.findViewById(R.id.height);
         mHeight.addTextChangedListener(textWatcher);
         gender = (RadioGroup) view.findViewById(R.id.gender) ;
+        gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId == R.id.male){
+                    isfemale =false;
 
+                }
+                else {
+                    isfemale =true;
+                }
+            }
+        });
         mDoneFab = (FloatingActionButton) view.findViewById(R.id.done);
         mDoneFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -274,7 +286,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void savePlayer(Activity activity) {
-        mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight.getText().toString(),mWeight.getText().toString()
+        mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight.getText().toString(),mWeight.getText().toString(),isfemale,
                 mSelectedAvatar);
         PreferencesHelper.writeToPreferences(activity, mPlayer);
     }

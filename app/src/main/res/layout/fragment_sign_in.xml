@@ -20,13 +20,6 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <ProgressBar
-            android:id="@+id/empty"
-            android:layout_width="@dimen/min_height_touch_target"
-            android:layout_height="@dimen/min_height_touch_target"
-            android:layout_gravity="center"
-            android:progressTint="@color/topeka_accent"
-            tools:ignore="UnusedAttribute" />
 
     <FrameLayout
             android:id="@+id/content"
