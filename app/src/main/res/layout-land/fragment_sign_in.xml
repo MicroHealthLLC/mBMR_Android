@@ -23,13 +23,7 @@
     android:paddingEnd="@dimen/spacing_double"
     android:paddingStart="@dimen/spacing_double">
 
-    <ProgressBar
-        android:id="@+id/empty"
-        android:layout_width="@dimen/min_height_touch_target"
-        android:layout_height="@dimen/min_height_touch_target"
-        android:layout_gravity="center"
-        android:progressTint="@color/topeka_accent"
-        tools:ignore="UnusedAttribute" />
+
 
     <FrameLayout
         android:id="@+id/content"

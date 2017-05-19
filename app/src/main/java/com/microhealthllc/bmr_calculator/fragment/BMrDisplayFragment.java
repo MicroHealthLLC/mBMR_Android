@@ -3,12 +3,17 @@ package com.microhealthllc.bmr_calculator.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.R;
+import com.microhealthllc.bmr_calculator.model.Player;
+import com.microhealthllc.bmr_calculator.widget.AvatarView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,10 +28,12 @@ public class BMrDisplayFragment extends Fragment  {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final String EXTRA_PLAYER = "player";
+    AvatarView avatar;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Player player;
 
     private OnFragmentInteractionListener mListener;
 
@@ -40,16 +47,16 @@ public class BMrDisplayFragment extends Fragment  {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param player Parameter 1.
+
      * @return A new instance of fragment BMrDisplayFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BMrDisplayFragment newInstance(String param1, String param2) {
+    public static BMrDisplayFragment newInstance(Player player) {
         BMrDisplayFragment fragment = new BMrDisplayFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(EXTRA_PLAYER, player);
+        //args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,17 +64,38 @@ public class BMrDisplayFragment extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+
+
+        //    mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+
+
+
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (getArguments() != null) {
+            player = getArguments().getParcelable(EXTRA_PLAYER);
+            Log.i("PlayerID","player id :"+player.getFirstName()+", drawable id="+player.getAvatar().getDrawableId()+"");
+            Toast.makeText(getActivity(),"player.getFirstName()="+player.getFirstName()+","+player.getAvatar().getDrawableId(),Toast.LENGTH_SHORT).show();
+        }
+
+        avatar  = (AvatarView) getActivity().findViewById(R.id.avatar);
+        avatar.setAvatar(player.getAvatar().getDrawableId());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_bmr_display, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

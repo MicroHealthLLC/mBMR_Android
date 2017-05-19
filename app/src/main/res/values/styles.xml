@@ -154,7 +154,7 @@
         <item name="cornerRadius">10dp</item>
     </style>
 
-    <style name="Theme.Main.NoActionBar">
+    <style name="Daniel.Material" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

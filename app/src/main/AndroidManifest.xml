@@ -28,18 +28,27 @@
         <activity
             android:name=".newactivities.SignInActivity"
             android:theme="@style/Topeka.SignInActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:parentActivityName=".newactivities.SignInActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".newactivities.SignInActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".BmrActivity"
-            android:label="@string/title_activity_bmr"
-            android:theme="@style/Theme.Main.NoActionBar"></activity>
-        <activity android:name=".newactivities.BMrDisplayActivity"></activity>
+
+            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+
+        <activity android:name=".newactivities.BMrDisplayActivity"
+            android:parentActivityName=".newactivities.SignInActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".newactivities.SignInActivity" />
+        </activity>
     </application>
 
 </manifest>

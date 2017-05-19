@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+    android:layout_height="match_parent">
 
 
     <FrameLayout android:id="@+id/category_container"
-        android:layout_width="395dp"
-        android:layout_height="587dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:context="newactivities.BMrDisplayActivity"
         tools:ignore="MergeRootFrame"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
         </FrameLayout>
-</LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:background="@color/accent"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:itemIconTint="@android:color/white"
+        app:headerLayout="@layout/mydrawer_header"
+        app:menu="@menu/menu_drawer"/>
+</android.support.v4.widget.DrawerLayout>
