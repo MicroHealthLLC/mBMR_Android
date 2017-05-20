@@ -401,7 +401,12 @@
         <attr name="android:textSize" tools:ignore="ResourceName" />
         <attr name="android:textStyle" tools:ignore="ResourceName" />
     </declare-styleable>
-
+    <declare-styleable name="NiceSpinner">
+        <attr name="arrowTint" format="color" />
+        <attr name="hideArrow" format="boolean" />
+        <attr name="backgroundSelector" format="integer"/>
+        <attr name="textTint" format="color"/>
+    </declare-styleable>
 
     <declare-styleable name="AvatarView">
         <attr name="avatar" format="reference" />

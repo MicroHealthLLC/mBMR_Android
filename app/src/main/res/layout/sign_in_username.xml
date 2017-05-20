@@ -130,6 +130,7 @@
 
 
     </LinearLayout>
+
     <TextView
         android:paddingStart="@dimen/spacing_double"
         android:paddingEnd="@dimen/spacing_double"

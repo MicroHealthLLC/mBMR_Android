@@ -1,12 +1,15 @@
 package com.microhealthllc.bmr_calculator.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +17,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.R;
+import com.microhealthllc.bmr_calculator.Spinner.NiceSpinner;
+import com.microhealthllc.bmr_calculator.chart.ColorArcProgressBar;
 import com.microhealthllc.bmr_calculator.helper.PreferencesHelper;
 import com.microhealthllc.bmr_calculator.model.Player;
 import com.microhealthllc.bmr_calculator.widget.AvatarView;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +46,7 @@ public class BMrDisplayFragment extends Fragment  {
     private String mParam1;
     private String mParam2;
     Player player;
-
+    private ColorArcProgressBar bar1;
     private OnFragmentInteractionListener mListener;
 
     public BMrDisplayFragment() {
@@ -88,8 +97,36 @@ public class BMrDisplayFragment extends Fragment  {
             Toast.makeText(getActivity(),"player.getFirstName()="+player.getFirstName()+","+player.getAvatar().getDrawableId(),Toast.LENGTH_SHORT).show();
         }
 
+        bar1 = (ColorArcProgressBar) getActivity().findViewById(R.id.bar1);
+    //    bar1.setcolors(Color.YELLOW,Color.YELLOW,Color.YELLOW);
+        bar1.setcolor3(Color.GREEN);
+        bar1.setcolor1(Color.GREEN);
+        bar1.setcolor2(Color.GREEN);
+        bar1.setCurrentValues(1500);
         avatar  = (AvatarView) getActivity().findViewById(R.id.avatar);
         setAvatarDrawable(avatar);
+
+        final CardView cardView = (CardView) getActivity().findViewById(R.id.inset_card);
+        final View fab = getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cardView.getTranslationY() > 0) {
+                    cardView
+                            .animate()
+                            .translationY(0)
+                            .setInterpolator(new FastOutSlowInInterpolator())
+                            .start();
+                } else {
+                    cardView
+                            .animate()
+                            .translationY(cardView.getHeight())
+                            .setInterpolator(new FastOutSlowInInterpolator())
+                            .start();
+                }
+
+            }
+        });
     }
 
     @Override

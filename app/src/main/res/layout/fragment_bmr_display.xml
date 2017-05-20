@@ -186,7 +186,7 @@
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
@@ -195,22 +195,12 @@
                 app:headerLayout="@layout/drawer_header"
                 android:orientation="vertical">
 
-                <android.support.v4.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
+
 
                         <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-
                             android:layout_margin="@dimen/card_margin">
 
 
@@ -226,19 +216,20 @@
                                     android:layout_gravity="center_horizontal"
                                     android:id="@+id/bar1"
                                     app:is_need_content="true"
-                                    app:front_color1="@color/accent"
-                                    app:max_value="100"
+                                    app:front_color1="@color/yellow"
+                                    app:max_value="2000"
+                                    app:is_need_dial="true"
                                     app:current_value="40.5"
                                     app:back_width="10dp"
                                     app:front_width="10dp"
                                     app:total_engle="270"
                                     app:is_need_unit="false"
-                                    app:string_unit="@string/unit"
+
                                     app:back_color="@android:color/darker_gray"
                                     android:layout_marginBottom="100dp"
 
-                                    app:front_color2="@color/accent"
-                                    app:front_color3="@color/primary_lightl"
+                                    app:front_color2="@color/red"
+                                    app:front_color3="@color/green"
                                     />
 
                                 <LinearLayout
@@ -270,31 +261,15 @@
                                         android:text="Your are overweight." />
 
 
-
-
-
-
                                 </LinearLayout>
 
 
                             </FrameLayout>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_gravity="bottom|right"
-                                android:background="#00000000"
-                                android:layout_height="wrap_content">
-
-
-                            </LinearLayout>
-
                         </android.support.v7.widget.CardView>
 
-                    </LinearLayout>
 
 
-
-                </android.support.v4.widget.NestedScrollView>
 
 
 
@@ -334,7 +309,47 @@
             </LinearLayout>
 
 
+
         </android.support.v4.widget.NestedScrollView>
 
-    </android.support.design.widget.CoordinatorLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/inset_card"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:translationY="128dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/spacing_normal_8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_insetEdge="bottom">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/padding_normal_16dp"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Relative movement"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large_32dp"
+                android:text="This animation uses standard curve" />
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
 
