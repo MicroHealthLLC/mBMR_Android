@@ -33,9 +33,13 @@ public class PreferencesHelper {
     private static final String PREFERENCE_FIRST_NAME = PLAYER_PREFERENCES + ".firstName";
     private static final String PREFERENCE_AGE = PLAYER_PREFERENCES + ".age";
     private static final String PREFERENCE_HEIGHT = PLAYER_PREFERENCES + ".height";
+    private static final String PREFERENCE_HEIGHT_IN = PLAYER_PREFERENCES + ".height_in";
+    private static final String PREFERENCE_HEIGHT_FT = PLAYER_PREFERENCES + ".height_feet";
     private static final String PREFERENCE_WEIGHT = PLAYER_PREFERENCES + ".weight";
     private static final String PREFERENCE_IS_FEMALE = PLAYER_PREFERENCES + ".isfemale";
     private static final String PREFERENCE_AVATAR = PLAYER_PREFERENCES + ".avatar";
+    private static final String PREFERENCE_ACTIVITY_POSITION = PLAYER_PREFERENCES+".activity_position";
+
 
     private PreferencesHelper() {
         //no instance
@@ -46,10 +50,13 @@ public class PreferencesHelper {
         SharedPreferences.Editor editor = getEditor(context);
         editor.putString(PREFERENCE_FIRST_NAME, player.getFirstName());
         editor.putString(PREFERENCE_AGE, player.getAge());
-        editor.putString(PREFERENCE_HEIGHT, player.getHeight());
+      //  editor.putString(PREFERENCE_HEIGHT, player.getHeight());
         editor.putString(PREFERENCE_WEIGHT, player.getWeight());
         editor.putBoolean(PREFERENCE_IS_FEMALE, player.getIsfemale());
         editor.putString(PREFERENCE_AVATAR, player.getAvatar().name());
+        editor.putInt(PREFERENCE_ACTIVITY_POSITION, player.getActivitiy_level_position());
+        editor.putString(PREFERENCE_HEIGHT_FT, player.getHeight_feets());
+        editor.putString(PREFERENCE_HEIGHT_IN, player.getHeight_inch());
         editor.apply();
     }
 
@@ -63,10 +70,13 @@ public class PreferencesHelper {
         SharedPreferences preferences = getSharedPreferences(context);
         final String firstName = preferences.getString(PREFERENCE_FIRST_NAME, null);
         final String age = preferences.getString(PREFERENCE_AGE, null);
-        final String height = preferences.getString(PREFERENCE_HEIGHT, null);
+        //final String height = preferences.getString(PREFERENCE_HEIGHT, null);
         final String weight = preferences.getString(PREFERENCE_WEIGHT, null);
         final boolean isfemale = preferences.getBoolean(PREFERENCE_IS_FEMALE, false);
         final String avatarPreference = preferences.getString(PREFERENCE_AVATAR, null);
+        final String height_ft = preferences.getString(PREFERENCE_HEIGHT_FT,null);
+        final String height_inch = preferences.getString(PREFERENCE_HEIGHT_IN,null);
+        final int  activity_level_position = preferences.getInt(PREFERENCE_ACTIVITY_POSITION, 0);
         final Avatar avatar;
         if (null != avatarPreference) {
             avatar = Avatar.valueOf(avatarPreference);
@@ -74,10 +84,10 @@ public class PreferencesHelper {
             avatar = null;
         }
 
-        if (null == firstName || null == age || null == height ||null == weight|| null == avatar ) {
+        if (null == firstName || null == age || null == height_ft || null == avatar ) {
             return null;
         }
-        return new Player(firstName, age,height,weight,isfemale, avatar);
+        return new Player(firstName,age,height_ft,height_inch, weight,isfemale,avatar,activity_level_position);
     }
 
     /**

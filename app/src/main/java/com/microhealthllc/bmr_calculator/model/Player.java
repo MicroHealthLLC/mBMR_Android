@@ -41,6 +41,9 @@ public class Player implements Parcelable {
     private String height;
     private boolean isfemale;
     private String weight;
+    private String height_inch;
+    private String height_feets;
+    private int activitiy_level_position;
 
 
     public Player(String firstName,String mAge,String height, String weight, boolean isfemale,Avatar avatar) {
@@ -52,9 +55,25 @@ public class Player implements Parcelable {
         this.isfemale =isfemale;
     }
 
+    public Player(String firstName,String mAge,String height_feets,String height_inch, String weight, boolean isfemale,Avatar avatar,int activity_level_position) {
+        this.mFirstName = firstName;
+        this.age = mAge;
+        this.height = height;
+        this.height_feets =height_feets;
+        this.height_inch = height_inch;
+        this.mAvatar = avatar;
+        this.weight = weight;
+        this.isfemale =isfemale;
+        this.activitiy_level_position = activity_level_position;
+    }
+
     protected Player(Parcel in) {
         mFirstName = in.readString();
         age = in.readString();
+        height_feets = in.readString();
+        height_inch = in.readString();
+        weight = in.readString();
+        activitiy_level_position =in.readInt();
         mAvatar = Avatar.values()[in.readInt()];
     }
 
@@ -73,6 +92,15 @@ public class Player implements Parcelable {
     }
     public boolean getIsfemale(){
         return this.isfemale;
+    }
+    public int getActivitiy_level_position(){
+        return this.activitiy_level_position;
+    }
+    public String getHeight_inch(){
+        return height_inch;
+    }
+    public String getHeight_feets(){
+        return height_feets;
     }
 
     public Avatar getAvatar() {

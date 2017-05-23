@@ -189,7 +189,7 @@ public class BMrDisplayActivity extends AppCompatActivity {
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         Fragment fragment = supportFragmentManager.findFragmentById(R.id.category_container);
         if (!(fragment instanceof BMrDisplayFragment)) {
-            fragment = BMrDisplayFragment.newInstance(player);
+            fragment = BMrDisplayFragment.newInstance();
         }
         supportFragmentManager.beginTransaction()
                 .replace(R.id.category_container, fragment)

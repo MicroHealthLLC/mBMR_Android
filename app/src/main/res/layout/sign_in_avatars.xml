@@ -22,6 +22,14 @@
         android:orientation="vertical"
         tools:showIn="@layout/fragment_sign_in">
 
+    <include
+        layout="@layout/active_level"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </include>
+
     <TextView
             android:id="@+id/toolbar_choose_avatar"
             android:layout_width="match_parent"
@@ -49,4 +57,6 @@
             android:scrollbarThumbVertical="@color/topeka_accent"
             android:smoothScrollbar="true"
             android:verticalSpacing="@dimen/spacing_double"/>
+
+
 </LinearLayout>

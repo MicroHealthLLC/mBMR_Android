@@ -136,6 +136,14 @@
         <item>Metric: meters and kilograms </item>
 
     </string-array>
+
+    <string-array name="active_level">
+        <item>Sedentary : little or no exercise</item>
+        <item>Lightly Active: exercises 1-3 days/week</item>
+        <item>Moderate Active : exercises 3-5 days /week</item>
+        <item>Very Active : exercise 6-7 days a week </item>
+        <item>Extra active : physical job/ 2x training </item>
+    </string-array>
     <string name="title_activity_additional_bmi_info">AdditionalBmiInfo</string>
     <string name="title_activity_bmr">BmrActivity</string>
     <string name="transition_avatar">AvatarTransition</string>

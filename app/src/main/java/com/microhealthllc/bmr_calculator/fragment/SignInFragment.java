@@ -19,6 +19,7 @@ package com.microhealthllc.bmr_calculator.fragment;/*
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -35,8 +36,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.R;
@@ -53,7 +57,7 @@ import com.microhealthllc.bmr_calculator.widget.TransitionListenerAdapter;
 /**
  * Enable selection of an {@link Avatar} and user name.
  */
-public class SignInFragment extends Fragment {
+public class SignInFragment extends Fragment implements AdapterView.OnItemSelectedListener{
 
     private static final String ARG_EDIT = "EDIT";
     private static final String KEY_SELECTED_AVATAR_INDEX = "selectedAvatarIndex";
@@ -61,16 +65,20 @@ public class SignInFragment extends Fragment {
     private EditText mFirstName;
     private EditText mAge;
     private EditText mWeight;
-    private EditText mHeight;
-
+    private EditText mHeight_feet;
+    private EditText mHeight_inches;
+    private RadioGroup malefemale;
+    Spinner spinner;
     public Avatar mSelectedAvatar;
     private View mSelectedAvatarView;
     private GridView mAvatarGrid;
     private FloatingActionButton mDoneFab;
+    private int activity_position;
     String player_firstname;
     String player_age;
     String player_weight;
     String player_height;
+    public boolean isfemale;
 
     private boolean edit;
 
@@ -184,8 +192,10 @@ public class SignInFragment extends Fragment {
         mAge.addTextChangedListener(textWatcher);
         mWeight =(EditText)view.findViewById(R.id.weight);
         mWeight.addTextChangedListener(textWatcher);
-        mHeight = (EditText)view.findViewById(R.id.height);
-        mHeight.addTextChangedListener(textWatcher);
+        mHeight_feet = (EditText)view.findViewById(R.id.feets);
+        mHeight_feet.addTextChangedListener(textWatcher);
+        mHeight_inches = (EditText)view.findViewById(R.id.inches);
+
         mDoneFab = (FloatingActionButton) view.findViewById(R.id.done);
         mDoneFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,7 +221,38 @@ public class SignInFragment extends Fragment {
             }
         });
 
+        spinner = (Spinner) getActivity().findViewById(R.id.spinner);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.active_level, R.layout.spinnerlayout);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.spinnerlayout);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+        malefemale = (RadioGroup) getActivity().findViewById(R.id.gender);
+        malefemale.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (checkedId== R.id.male){
+                    isfemale =false;
+                }
+                else {
+                    isfemale =true;
+                }
+            }
+        });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                   activity_position= position;
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                activity_position = 0;
+
+            }
+        });
 
     }
 
@@ -287,7 +328,8 @@ public class SignInFragment extends Fragment {
           mFirstName.setText(mPlayer.getFirstName());
             mAge.setText(mPlayer.getAge());
             mWeight.setText(mPlayer.getWeight());
-            mHeight.setText(mPlayer.getHeight());
+            mHeight_feet.setText(mPlayer.getHeight_feets());
+            mHeight_inches.setText(mPlayer.getHeight_inch());
             mSelectedAvatar = mPlayer.getAvatar();
         }
     }
@@ -300,8 +342,8 @@ public class SignInFragment extends Fragment {
 
     private void savePlayer(Activity activity) {
 
-        mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight.getText().toString(),mWeight.getText().toString(),false,
-                mSelectedAvatar);
+        mPlayer = new Player(mFirstName.getText().toString(), mAge.getText().toString(),mHeight_feet.getText().toString(),mHeight_inches.getText().toString(),mWeight.getText().toString(),isfemale,
+                mSelectedAvatar,activity_position);
         Log.i("MyMplayer",""+mPlayer.getAvatar().getDrawableId());
         PreferencesHelper.writeToPreferences(activity, mPlayer);
     }
@@ -313,7 +355,7 @@ public class SignInFragment extends Fragment {
     public void isInputEmpty(){
         player_firstname = mFirstName.getText().toString();
         player_age = mAge.getText().toString();
-        player_height = mHeight.getText().toString();
+        player_height = mHeight_feet.getText().toString();
         player_weight = mWeight.getText().toString();
     }
    /* private boolean isInputDataValid() {
@@ -327,11 +369,21 @@ public class SignInFragment extends Fragment {
      * @return The recommended amount of columns.
      */
     private boolean isInputDataValid() {
-        return PreferencesHelper.isInputDataValid(mFirstName.getText(), mAge.getText(),mHeight.getText().toString(), mWeight.getText().toString());
+        return PreferencesHelper.isInputDataValid(mFirstName.getText(), mAge.getText(),mHeight_feet.getText().toString(), mWeight.getText().toString());
     }
     private int calculateSpanCount() {
         int avatarSize = getResources().getDimensionPixelSize(R.dimen.size_fab);
         int avatarPadding = getResources().getDimensionPixelSize(R.dimen.spacing_double);
         return mAvatarGrid.getWidth() / (avatarSize + avatarPadding);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
