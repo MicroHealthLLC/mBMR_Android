@@ -6,14 +6,14 @@ Calculate your Basal Metabolic Rate: the number of calories required to keep you
 
 
 
-![Alt text](https://drive.google.com/open?id=0B24WiLHwdPNSN2UwMGprZms4aUU "BMR HOME")
+![Alt text](https://s3.amazonaws.com/githubbmr/home.png "BMR HOME")
 
 
 
-![Alt text](https://drive.google.com/open?id=0B24WiLHwdPNSQUh5V3hZRWUxWHc "ENTER DETAILS")
+![Alt text](https://s3.amazonaws.com/githubbmr/Screenshot_20170530-221755.png "ENTER DETAILS")
 
 
-![Alt text](https://drive.google.com/open?id=0B24WiLHwdPNSdWhEQ0lwbXhOMjg "LOG HISTORY")
+![Alt text](https://s3.amazonaws.com/githubbmr/Screenshot_20170530-221815.png "LOG HISTORY")
 
 
-![Alt text](https://drive.google.com/open?id=0B24WiLHwdPNSWGlKenhFUXFiakU "ABOUT")
+![Alt text](https://s3.amazonaws.com/githubbmr/Screenshot_20170530-221821.png "ABOUT")
