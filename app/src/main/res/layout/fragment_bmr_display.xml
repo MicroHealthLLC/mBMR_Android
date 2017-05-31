@@ -19,15 +19,13 @@
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
-
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:background="@color/black"
                 style="@style/SizeSpecificCollapsingToolbarLayout"
                 app:expandedTitleMarginStart="20dp"
-
-                app:expandedTitleMarginEnd="40dp">
+                app:expandedTitleMarginEnd="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,7 +40,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/black"
                         android:orientation="vertical"
-                        android:paddingBottom="16dp"
+                        android:paddingBottom="20dp"
                         android:paddingLeft="30dp"
                         android:paddingRight="30dp"
                         android:paddingTop="16dp">
@@ -68,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="George"
-                            android:textSize="50sp"
+                            android:textSize="40sp"
                             android:textColor="#fff"
 
                             />
@@ -187,11 +185,13 @@
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:paddingStart="25dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
                 app:headerLayout="@layout/drawer_header"
                 android:orientation="vertical">
 
@@ -201,23 +201,30 @@
                         <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/card_margin">
+
+                            android:layout_marginTop="@dimen/card_margrine"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginLeft="@dimen/card_margrineleftright"
+                            android:layout_marginRight="@dimen/card_margrineleftright">
 
 
                             <FrameLayout
                                 android:padding="15dp"
                                 android:layout_width="wrap_content"
-                                android:layout_gravity="center"
+
+                                android:layout_gravity="center_horizontal"
                                 android:layout_height="wrap_content">
 
                                 <com.microhealthllc.bmr_calculator.chart.ColorArcProgressBar
-                                    android:layout_width="300dp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="72dp"
+                                    android:paddingTop="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_height="0dp"
                                     android:layout_gravity="center_horizontal"
                                     android:id="@+id/bar1"
                                     app:is_need_content="true"
-                                    app:front_color1="@color/yellow"
-                                    app:max_value="2000"
+                                    app:front_color1="@color/theme_primary_accent"
+                                    app:max_value="3000"
                                     app:is_need_dial="true"
                                     app:current_value="40.5"
                                     app:back_width="10dp"
@@ -228,8 +235,8 @@
                                     app:back_color="@android:color/darker_gray"
                                     android:layout_marginBottom="100dp"
 
-                                    app:front_color2="@color/red"
-                                    app:front_color3="@color/green"
+                                    app:front_color2="@color/yellow"
+                                    app:front_color3="@color/accent"
                                     />
 
                                 <LinearLayout
@@ -258,14 +265,20 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:orientation="vertical"
-                                android:paddingBottom="70dp"
+                                android:paddingBottom="60dp"
                                 android:gravity="center_horizontal"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center|bottom">
 
-                                <TextView
+                                <com.microhealthllc.bmr_calculator.chart.TickerView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:id="@+id/dailycal"
+                                    android:shadowColor="@android:color/black"
+                                    app:ticker_animationDuration="1000"
+                                    android:shadowDx="1"
+                                    android:shadowDy="1"
+                                    android:shadowRadius="2"
                                     android:textSize="40sp"
                                     android:text="243"/>
                                 <TextView
@@ -273,26 +286,39 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:text="Daily Calories Needed"/>
-
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/date_curr"
+                                    android:textSize="12sp"
+                                    android:text="Mon Feb 25"/>
                                 </LinearLayout>
                         </android.support.v7.widget.CardView>
-
-
-
 
 
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_margin"
-                    android:layout_marginLeft="@dimen/card_margin"
-                    android:layout_marginRight="@dimen/card_margin">
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="@dimen/card_margrineleftright"
+                    android:layout_marginRight="@dimen/card_margrineleftright">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Recent Activities"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:textSize="20sp"/>
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recycler_view"
@@ -324,6 +350,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
+        android:src="@mipmap/ic_add"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin" />
@@ -347,14 +374,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Relative movement"
+                android:text="Basal Metabolic Rate"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:id="@+id/binfo"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large_32dp"
-                android:text="This animation uses standard curve" />
+                android:text="@string/bmr_info" />
         </FrameLayout>
     </android.support.v7.widget.CardView>
 

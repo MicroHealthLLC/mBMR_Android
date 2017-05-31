@@ -18,13 +18,15 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.MyViewHo
     private List<LogModel> logList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView bmi, weight, datetime;
+        public TextView bmi, weight, datetime, caloriesneeded;
+
 
         public MyViewHolder(View view) {
             super(view);
             bmi = (TextView) view.findViewById(R.id.bmi_text);
             weight = (TextView) view.findViewById(R.id.weight_txt);
             datetime = (TextView) view.findViewById(R.id.date_text);
+            caloriesneeded =(TextView) view.findViewById(R.id.caloriesneeded);
         }
     }
 
@@ -46,6 +48,7 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.MyViewHo
        LogModel movie = logList.get(position);
         holder.bmi.setText(movie.getBmi());
         holder.weight.setText(movie.getWeight());
+        holder.caloriesneeded.setText(movie.getCalories_needed());
         holder.datetime.setText(movie.getDatetime());
     }
 

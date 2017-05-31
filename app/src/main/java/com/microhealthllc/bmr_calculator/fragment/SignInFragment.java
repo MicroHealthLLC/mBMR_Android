@@ -43,6 +43,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.microhealthllc.bmr_calculator.DB.BmiLogs;
+import com.microhealthllc.bmr_calculator.DB.DBHandler;
 import com.microhealthllc.bmr_calculator.R;
 import com.microhealthllc.bmr_calculator.adapter.AvatarAdapter;
 import com.microhealthllc.bmr_calculator.helper.ApiLevelHelper;
@@ -52,6 +54,11 @@ import com.microhealthllc.bmr_calculator.model.Avatar;
 import com.microhealthllc.bmr_calculator.model.Player;
 import com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity;
 import com.microhealthllc.bmr_calculator.widget.TransitionListenerAdapter;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 /**
@@ -79,7 +86,12 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     String player_weight;
     String player_height;
     public boolean isfemale;
-
+    public final int SEDENTARY = 0;
+    public final int  LIGHTLY_ACTIVE = 0;
+    public final int MODERATE =1;
+    public final int VERY_ACTIVE =2;
+    public final int  EXTRA_ACTIVE =4;
+    DBHandler db;
     private boolean edit;
 
     public static SignInFragment newInstance(boolean edit) {
@@ -144,7 +156,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         initContentViews(view);
         initContents();
         isInputEmpty();
-
+        db  = new DBHandler(getActivity());
         super.onViewCreated(view, savedInstanceState);
 
     }
@@ -204,6 +216,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     case R.id.done:
                         savePlayer(getActivity());
                         isInputEmpty();
+                        DB_ENTRY();
 
                                 if (null == mSelectedAvatarView) {
                                     performSignInWithTransition(mAvatarGrid.getChildAt(
@@ -385,5 +398,111 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+
+    public void DB_ENTRY(){
+
+
+        try {
+
+            if(db.getLast().getDateTime()==null) {
+
+                db.addLog(new BmiLogs(String.format("%.1f", calculateBMR()), PreferencesHelper.getPlayer(getActivity()).getWeight(), String.format("%.1f", DailyCaloriesNeeded()), getDateTime()));
+
+            }
+                else if(db.getLast().getDateTime().equals(getDateTime())){
+                db.updateLastEntry(db.getLast().getId(),String.format("%.1f", calculateBMR()),PreferencesHelper.getPlayer(getActivity()).getWeight(),String.format("%.1f", DailyCaloriesNeeded()), getDateTime());
+            }
+
+
+           else {
+                db.addLog(new BmiLogs(String.format("%.1f", calculateBMR()), PreferencesHelper.getPlayer(getActivity()).getWeight(), String.format("%.1f", DailyCaloriesNeeded()), getDateTime()));
+
+            }
+        }
+        catch(Exception e){
+            Log.d("Error  Exception",e.toString());
+        }
+    }
+
+
+
+
+    public Double calculateheightINCHES() {
+        double inches = 0;
+        double feets = Double.parseDouble(PreferencesHelper.getPlayer(getActivity()).getHeight_feets());
+        if (PreferencesHelper.getPlayer(getActivity()).getHeight_inch() != null) {
+            inches = Double.parseDouble(PreferencesHelper.getPlayer(getActivity()).getHeight_inch());
+        }
+        ;
+        return ((feets * 12) + (inches));
+    }
+
+    public Double calculateBMR(){
+        //women
+    /*
+    Women: BMR = 655 + (4.35 x weight in pounds) + (4.7 x height in inches) - (4.7 x age in years)
+
+   Men: BMR = 66 + (6.23 x weight in pounds) + (12.7 x height in inches) - (6.8 x age in years)
+    * */
+        Double BMR;
+        Double weight = Double.parseDouble(PreferencesHelper.getPlayer(getActivity()).getWeight());
+        Double height = calculateheightINCHES();
+        Double age = Double.parseDouble(PreferencesHelper.getPlayer(getActivity()).getAge());
+        if (PreferencesHelper.getPlayer(getActivity()).getIsfemale()){
+            BMR =  655 +(4.35 * weight)+(4.7 * height)-(4.7*age);
+        }
+        else {
+            BMR = 66 +(6.23 * weight)+(12.7 * height)-(6.8 *age);
+        }
+        //man
+        return BMR;
+    }
+
+    public  Double DailyCaloriesNeeded(){
+        Double DailyCaloriies = 0.0;
+        Double BMR = calculateBMR();
+        int activity_level = PreferencesHelper.getPlayer(getActivity()).getActivitiy_level_position();
+        if(activity_level == SEDENTARY){
+            DailyCaloriies =  BMR *1.2;
+
+        }
+
+        else if(activity_level == LIGHTLY_ACTIVE){
+            DailyCaloriies = BMR * 1.375;
+        }
+        else if (activity_level == MODERATE){
+            DailyCaloriies = BMR * 1.55;
+        }
+
+        else if (activity_level == VERY_ACTIVE){
+            DailyCaloriies = BMR * 1.725;
+        }
+        else {
+            DailyCaloriies = BMR * 1.9;
+        }
+        return DailyCaloriies;
+    }
+
+
+
+    public String getDateTime() {
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "EE MM/dd", Locale.getDefault());
+        //Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+
+    public String getDateTimeforLastActivity() {
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "EEE, MM.dd h:mm a", Locale.getDefault());
+        //Date date = new Date();
+        return dateFormat.format(date);
     }
 }

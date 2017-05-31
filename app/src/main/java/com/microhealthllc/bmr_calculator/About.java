@@ -19,9 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.DB.DBHandler;
-import com.microhealthllc.bmr_calculator.chart.LineColumnDependencyActivity;
+
 import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionButton;
 import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu;
+import com.microhealthllc.bmr_calculator.newactivities.SignInActivity;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import butterknife.ButterKnife;
@@ -53,10 +54,7 @@ public class About  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
         db = new DBHandler(this);
-        menumainred = (FloatingActionMenu) findViewById(R.id.menu_red);
-        enteredit_fab = (FloatingActionButton) findViewById(R.id.enter_edit_data);
-        weight_graphfab = (FloatingActionButton) findViewById(R.id.bmi_graph);
-        bmi_logsfab =(FloatingActionButton) findViewById(R.id.bmi_logs);
+
          twitterview = (Button) findViewById(R.id.followus);
         websitetxt =(Button) findViewById(R.id.webaddress);
         privacypolicy =(Button) findViewById(R.id.privacyp);
@@ -104,14 +102,12 @@ public class About  extends AppCompatActivity {
         if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setTitle("Bmi Calculator");
+            getSupportActionBar().setTitle("");
 
         }
         setUpNavigationDrawer();
 
-        enteredit_fab.setOnClickListener(clickListener);
-        weight_graphfab.setOnClickListener(clickListener);
-        bmi_logsfab.setOnClickListener(clickListener);
+
 
 
     }
@@ -123,42 +119,7 @@ public class About  extends AppCompatActivity {
         startActivity(launchBrowser);
 
     }
-    private View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.enter_edit_data:
-                {
-                  //  SharedPreferences SP = getSharedPreferences(MetricSettings, Context.MODE_PRIVATE);
-                 //   metrics = SP.getInt(getString(R.string.metric_settings),0);
 
-
-                    Intent i = new Intent(About.this, BasicSettings.class);
-                    startActivity(i);
-
-                }
-                break;
-                case R.id.bmi_graph:
-
-                    Intent i = new Intent(About.this, LineColumnDependencyActivity.class);
-                    startActivity(i);
-
-                    break;
-             /*   case R.id.unitsettings:
-                //    MaterialDialog.Builder builder = new MaterialDialog.Builder(BmiChart.this);
-                   Intent set = new Intent(BmiChart.this, BasicSettings.class);
-                   startActivity(set);
-                 //  unitoptions();
-
-
-                    break;*/
-                case R.id.bmi_logs :
-                    Intent it = new Intent(About.this, LogActivity.class);
-                    startActivity(it);
-
-            }
-        }
-    };
 
     private void setupToolbar() {
         final ActionBar ab = getSupportActionBar();
@@ -178,20 +139,7 @@ public class About  extends AppCompatActivity {
 
 
     private void setUpNavigationDrawer() {
-/*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
 
-        try {
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setSubtitle(getString(R.string.subtitle));
-            actionBar.setDisplayShowTitleEnabled(true);
-        } catch (Exception ignored) {
-        }
-*/
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -199,51 +147,23 @@ public class About  extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_item_1:
+                    case R.id.edit:
                         // mCurrentSelectedPosition = 0;
-                        Intent gh = new Intent(About.this, BasicSettings.class);
-                        startActivity(gh);
+                        startActivity(new Intent(About.this, SignInActivity.class));
                         break;
-                    case R.id.navigation_item_2:
-                        //  mCurrentSelectedPosition = 1;
-                        Intent i = new Intent(About.this, BasicSettings.class);
-                        startActivity(i);
-
-                        break;
-                    case R.id.navigation_item_3:
-                        //    mCurrentSelectedPosition = 2;
+                    case R.id.log:
                         Intent j = new Intent(About.this, LogActivity.class);
                         startActivity(j);
                         break;
-                    case R.id.navigation_item_4:
-                        //   mCurrentSelectedPosition = 3;
-                        new LovelyStandardDialog(About.this)
-                                .setTopColorRes(R.color.accent)
-                                .setButtonsColorRes(R.color.accent)
-
-                                .setTitle("Warning!!")
-                                .setMessage(" This will delete all stored data,This cannot be undone")
-                                .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Toast.makeText(About.this, "positive clicked", Toast.LENGTH_SHORT).show();
-                                          db.deleteEntry();
-                                        Intent i = new Intent(About.this, BmiChartRed.class);
-                                        startActivity(i);
-                                    }
-                                })
-                                .setNegativeButton(android.R.string.no, null)
-                                .show();
-
+                    case R.id.about:
+                        //    mCurrentSelectedPosition = 2;
 
                         break;
-                    case R.id.navigation_item_5:
-                            Intent home = new Intent(About.this, BmiChart.class);
-                        startActivity(home);
-                        break;
-                    case R.id.navigation_item_6:
-                        Intent js = new Intent(About.this, LineColumnDependencyActivity.class);
-                        startActivity(js);
+
+
+
+                  //  case R.id.navigation_item_6:
+
 
                 }
 

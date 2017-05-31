@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:title="Log BMI Data"
+            app:title="Log History"
             android:textAlignment="textStart"
             android:layout_gravity="start"
             style="@style/SizeSpecificCollapsingToolbarLayout"
@@ -78,70 +78,14 @@
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 
-
-
-    <LinearLayout
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_gravity="bottom|right|end"
-        android:layout_height="wrap_content">
+        android:src="@drawable/ic_action_action_delete"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin" />
 
-        <com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu
-            android:layout_height="wrap_content"
-            android:id="@+id/fabdown"
-            android:layout_width="wrap_content"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:src="@drawable/ic_action_navigation_check"
-            app:layout_anchor="@id/main.appbar"
-            app:backgroundTint="@color/accent"
-            fab:menu_colorNormal="@color/accent"
-            app:layout_anchorGravity="bottom|right|end">
-
-            <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
-                android:id="@+id/enter_edit_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"
-                fab:menu_colorNormal="@color/accent"
-                style="@style/MenuButtonsStyle"
-                app:fabSize="mini"
-                fab:fab_label="enter/edit data" />
-
-
-            <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
-                android:id="@+id/bmi_logs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/accent"
-                fab:menu_colorNormal="@color/accent"
-                android:src="@drawable/ic_action_action_history"
-                app:fabSize="mini"
-                style="@style/MenuButtonsStyle"
-                fab:fab_label="log history" />
-            <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
-                android:id="@+id/home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_action_home"
-                fab:menu_colorNormal="@color/accent"
-                style="@style/MenuButtonsStyle"
-                app:fabSize="mini"
-                fab:fab_label="home" />
-
-            <com.microhealthllc.mbmicalc.floatbutton.FloatingActionButton
-                android:id="@+id/delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_action_delete"
-                fab:menu_colorNormal="@color/accent"
-                style="@style/MenuButtonsStyle"
-                app:fabSize="mini"
-                fab:fab_label="delete " />
-
-
-
-        </com.microhealthllc.mbmicalc.floatbutton.FloatingActionMenu>
-
-    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
 
@@ -156,3 +100,4 @@ app:itemIconTint="@android:color/white"
 app:headerLayout="@layout/mydrawer_header"
 app:menu="@menu/menu_drawer"/>
     </android.support.v4.widget.DrawerLayout>
+

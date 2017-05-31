@@ -84,7 +84,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:padding="5dp"
-                        android:src="@drawable/launchs"
+                        android:src="@drawable/bmrblack"
                         android:layout_gravity="center_horizontal"/>
 
                     <TextView
@@ -305,66 +305,6 @@
     </android.support.v4.widget.NestedScrollView>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:background="#00000000"
-        android:layout_height="wrap_content">
-
-
-        <com.microhealthllc.bmr_calculator.chart.floatbutton.FloatingActionMenu
-            android:id="@+id/menu_red"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/accent"
-            fab:menu_colorNormal="@color/accent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            fab:menu_labels_ellipsize="end"
-            fab:menu_labels_singleLine="true"
-            fab:menu_backgroundColor="#00000000"
-
-            fab:menu_fab_label="">
-
-            <com.microhealthllc.bmr_calculator.chart.floatbutton.FloatingActionMenu
-                android:id="@+id/enter_edit_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"
-                app:backgroundTint="@color/primary"
-                fab:menu_colorNormal="@color/accent"
-                style="@style/MenuButtonsStyle"
-                app:fabSize="mini"
-                fab:fab_label="enter/edit data" />
-
-            <com.microhealthllc.bmr_calculator.chart.floatbutton.FloatingActionMenu
-                android:id="@+id/bmi_graph"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/accent"
-                fab:menu_colorNormal="@color/accent"
-                android:src="@drawable/ic_action_social_poll"
-                app:fabSize="mini"
-                style="@style/MenuButtonsStyle"
-                fab:fab_label="Activity Monitor" />
-
-            <com.microhealthllc.bmr_calculator.chart.floatbutton.FloatingActionMenu
-                android:id="@+id/bmi_logs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/accent"
-                fab:menu_colorNormal="@color/accent"
-                android:src="@drawable/ic_action_action_history"
-                app:fabSize="mini"
-                style="@style/MenuButtonsStyle"
-                fab:fab_label="log history" />
-
-        </com.microhealthllc.bmr_calculator.chart.floatbutton.FloatingActionMenu>
-
-    </LinearLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

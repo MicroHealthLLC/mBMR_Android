@@ -18,18 +18,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.About;
-import com.microhealthllc.bmr_calculator.BasicSettings;
-import com.microhealthllc.bmr_calculator.BmiChartRed;
 import com.microhealthllc.bmr_calculator.LogActivity;
 import com.microhealthllc.bmr_calculator.R;
-import com.microhealthllc.bmr_calculator.chart.LineColumnDependencyActivity;
 import com.microhealthllc.bmr_calculator.fragment.BMrDisplayFragment;
 import com.microhealthllc.bmr_calculator.helper.PreferencesHelper;
 import com.microhealthllc.bmr_calculator.model.Player;
-import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 public class BMrDisplayActivity extends AppCompatActivity {
 
@@ -65,34 +60,14 @@ public class BMrDisplayActivity extends AppCompatActivity {
             } else {
                 mDrawerLayout.openDrawer(mNavigationView);
             }
-            NavUtils.navigateUpFromSameTask(this);
+           // NavUtils.navigateUpFromSameTask(this);
         }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(mNavigationView)) {
-            mDrawerLayout.closeDrawer(mNavigationView);
-        } else {
-            super.onBackPressed();
-        }
-    }
-    private void setUpNavigationDrawer() {
-/*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
 
-        try {
-            assert actionBar != null;
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setSubtitle(getString(R.string.subtitle));
-            actionBar.setDisplayShowTitleEnabled(true);
-        } catch (Exception ignored) {
-        }
-*/
+    private void setUpNavigationDrawer() {
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -100,21 +75,20 @@ public class BMrDisplayActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_item_1:
-                        // mCurrentSelectedPosition = 0;
+
+                    case R.id.edit:
+                        startActivity(new Intent(BMrDisplayActivity.this, SignInActivity.class));
                         break;
-                    case R.id.navigation_item_2:
+                    case R.id.log:
+                        startActivity(new Intent(BMrDisplayActivity.this, LogActivity.class));
 
                         break;
-                    case R.id.navigation_item_3:
-
-                        break;
-                    case R.id.navigation_item_4:
+                    case R.id.about:
                         //   mCurrentSelectedPosition = 3;
 
-
+                        startActivity(new Intent(BMrDisplayActivity.this, About.class));
                         break;
-                    case R.id.navigation_item_5:
+
 
                 }
 
@@ -127,13 +101,13 @@ public class BMrDisplayActivity extends AppCompatActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //getSupportActionBar().setTitle(getString(R.string.drawer_opened));
+
                 invalidateOptionsMenu();
             }
 
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                //getSupportActionBar().setTitle(mActivityTitle);
+
                 invalidateOptionsMenu();
             }
         };
@@ -171,7 +145,7 @@ public class BMrDisplayActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("");
 
         }
-        //   ab.setDisplayHomeAsUpEnabled(true);
+
 
         setUpNavigationDrawer();
         attachBMrDisplayFragment();

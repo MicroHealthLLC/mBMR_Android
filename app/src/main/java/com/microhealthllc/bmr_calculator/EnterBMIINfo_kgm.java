@@ -53,7 +53,7 @@ public class EnterBMIINfo_kgm extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.done:
-                Intent bmiact = new Intent(this,BmiChart.class );
+
                 Bundle b = new Bundle();
                 if(TextUtils.isEmpty(editheight.getText().toString()) ||TextUtils.isEmpty(editweight.getText().toString()) ){
 
@@ -63,8 +63,8 @@ public class EnterBMIINfo_kgm extends AppCompatActivity {
                     b.putDouble("weight", Double.parseDouble(editweight.getText().toString()));
                     Log.i("Dataheight",""+Double.parseDouble(editheight.getText().toString()));
                     Log.i("Dataweight",""+Double.parseDouble(editweight.getText().toString()));
-                    bmiact.putExtras(b);
-                    startActivity(bmiact);
+
+
                 }
 
                 return true;

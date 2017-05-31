@@ -128,7 +128,7 @@
     <string name="title_activity_test_card">TestCard</string>
 
     <!-- Strings related to Settings -->
-
+<string name="bmr_info">BMR is the amount of energy you need while resting in a temperate environment during the post-absorptive state. <b>Amount of Calories Needed: </b></string>
 
     <!-- Example settings for Notifications -->
     <string-array name="units_array">

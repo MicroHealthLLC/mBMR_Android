@@ -6,7 +6,7 @@ package com.microhealthllc.bmr_calculator;
 
 
 public class LogModel {
-    private String bmi, weight, datetime;
+    private String bmi, weight, datetime, calories_needed;
 
     public LogModel() {
     }
@@ -17,14 +17,27 @@ public class LogModel {
         this.datetime = datetime;
     }
 
+    public LogModel(String bmi, String weight,String calories_needed, String datetime) {
+        this.bmi= bmi;
+        this.weight = weight;
+        this.calories_needed = calories_needed;
+        this.datetime = datetime;
+
+    }
     public String getBmi() {
         return  bmi;
     }
 
-    public void setBMi(String bmi) {
+    public void setBmi(String bmi) {
         this.bmi = bmi;
     }
-
+    public void  setCalories_needed(String calories_needed)
+    {
+    this.calories_needed = calories_needed;
+}
+public String getCalories_needed(){
+    return this.calories_needed;
+}
     public String getWeight() {
         return weight;
     }

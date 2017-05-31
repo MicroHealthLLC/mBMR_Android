@@ -21,8 +21,10 @@ import android.widget.Toast;
 
 import com.microhealthllc.bmr_calculator.DB.BmiLogs;
 import com.microhealthllc.bmr_calculator.DB.DBHandler;
-import com.microhealthllc.bmr_calculator.chart.LineColumnDependencyActivity;
+
 import com.microhealthllc.bmr_calculator.floatbutton.FloatingActionMenu;
+import com.microhealthllc.bmr_calculator.newactivities.BMrDisplayActivity;
+import com.microhealthllc.bmr_calculator.newactivities.SignInActivity;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class LogActivity extends AppCompatActivity {
     DBHandler db;
     private FloatingActionMenu menumainred;
     private FloatingActionButton home_fab;
-    private FloatingActionButton delete_graphfab;
+    private FloatingActionButton delete_fab;
     private FloatingActionButton enteredit_fab;
     private FloatingActionButton bmi_logsfab;
 
@@ -51,7 +53,7 @@ public class LogActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setHomeButtonEnabled(true);
-        ab.setTitle("BMI Calculator");
+
         db = new DBHandler(this);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -60,14 +62,32 @@ public class LogActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-        menumainred = (FloatingActionMenu) findViewById(R.id.menu_red);
-        home_fab =(FloatingActionButton) findViewById(R.id.home) ;
-        delete_graphfab = (FloatingActionButton) findViewById(R.id.delete);
-        enteredit_fab = (FloatingActionButton) findViewById(R.id.enter_edit_data) ;
+        delete_fab = (FloatingActionButton) findViewById(R.id.fab);
+        delete_fab.setOnClickListener(new View.OnClickListener() {
 
-        delete_graphfab.setOnClickListener(clickListener);
-        home_fab.setOnClickListener(clickListener);
-        enteredit_fab.setOnClickListener(clickListener);
+            @Override
+            public void onClick(View v) {
+                new LovelyStandardDialog(LogActivity.this)
+                        .setTopColorRes(R.color.accent)
+                        .setButtonsColorRes(R.color.accent)
+
+                        .setTitle("Warning!!")
+                        .setMessage(" This will delete all stored data,This cannot be undone")
+                        .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(LogActivity.this, "positive clicked", Toast.LENGTH_SHORT).show();
+                                db.deleteEntry();
+                               startActivity(new Intent(LogActivity.this, SignInActivity.class));
+
+
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .show();
+            }
+        });
+
         prepareMovieData();
         setUpNavigationDrawer();
     }
@@ -82,7 +102,7 @@ public class LogActivity extends AppCompatActivity {
             List<BmiLogs> logs = db.getAllShops();
 
             for (BmiLogs log : logs) {
-                loghistory = new LogModel(log.getBmi(), log.getWeight(), log.getDateTime());
+                loghistory = new LogModel(log.getBmi(), log.getWeight(), log.getCalories_needed(),log.getDateTime());
 
 
                 logList.add(loghistory);
@@ -102,52 +122,6 @@ public class LogActivity extends AppCompatActivity {
 
 
 
-    private View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.enter_edit_data:
-                {
-                    //   SharedPreferences SP = getSharedPreferences(MetricSettings, Context.MODE_PRIVATE);
-                    // metrics = SP.getInt(getString(R.string.metric_settings),0);
-
-
-                    Intent i = new Intent(LogActivity.this, BasicSettings.class);
-                    startActivity(i);
-
-                }
-                break;
-                case R.id.home: {
-                    Intent i = new Intent(LogActivity.this, BmiChart.class);
-                    startActivity(i);
-                }
-                break;
-                case R.id.delete:
-                {
-
-                    new LovelyStandardDialog(LogActivity.this)
-                            .setTopColorRes(R.color.accent)
-                            .setButtonsColorRes(R.color.accent)
-
-                            .setTitle("Warning")
-                            .setMessage("Do you want to delete all  stored data? This cannot be undone")
-                            .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Toast.makeText(LogActivity.this, "positive clicked", Toast.LENGTH_SHORT).show();
-
-                                    Intent i = new Intent(LogActivity.this, BmiChart.class);
-                                    startActivity(i);
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, null)
-                            .show();
-
-
-                }
-            }
-        }
-    };
 
 
 
@@ -199,48 +173,28 @@ public class LogActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_item_1:
+
                         // mCurrentSelectedPosition = 0;
-                        Intent g = new Intent(LogActivity.this, BmiChart.class);
-                        startActivity(g);
-                        break;
-                    case R.id.navigation_item_2:
+                      //  startActivity(new Intent(LogActivity.this, BMrDisplayActivity.class));
+
+                    case R.id.edit:
                         //  mCurrentSelectedPosition = 1;
-                        Intent i = new Intent(LogActivity.this, BasicSettings.class);
-                        startActivity(i);
+                        startActivity(new Intent(LogActivity.this, SignInActivity.class));
 
                         break;
-                    case R.id.navigation_item_3:
+                    case R.id.log:
                         //    mCurrentSelectedPosition = 2;
 
                         break;
-                    case R.id.navigation_item_4:
+                    case R.id.about:
                         //   mCurrentSelectedPosition = 3;
-                        new LovelyStandardDialog(LogActivity.this)
-                                .setTopColorRes(R.color.accent)
-                                .setButtonsColorRes(R.color.accent)
+                        startActivity(new Intent(LogActivity.this, About.class));
 
-                                .setTitle("Warning!!")
-                                .setMessage(" This will delete all stored data,This cannot be undone")
-                                .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        Toast.makeText(LogActivity.this, "positive clicked", Toast.LENGTH_SHORT).show();
-                                        db.deleteEntry();
-
-                                        Intent i = new Intent(LogActivity.this, BmiChart.class);
-                                        startActivity(i);
-                                    }
-                                })
-                                .setNegativeButton(android.R.string.no, null)
-                                .show();
-                        break;
-                    case R.id.navigation_item_5:
 
                         break;
-                    case R.id.navigation_item_6:
-                        Intent js = new Intent(LogActivity.this, LineColumnDependencyActivity.class);
-                        startActivity(js);
+
+                  //  case R.id.navigation_item_6:
+
 
                 }
 

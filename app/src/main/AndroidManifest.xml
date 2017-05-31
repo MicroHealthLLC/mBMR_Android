@@ -4,22 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bmrblack"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/bmrblack"
         android:supportsRtl="true"
         android:theme="@style/Theme.Main">
-        <activity
-            android:name=".BasicSettings"
-            android:label="@string/title_activity_basic_settings"
-            android:theme="@style/NoActionBar" />
-        <activity android:name=".BmiChart" />
         <activity android:name=".LogActivity" />
-        <activity android:name=".BmiChartBloodRed" />
-        <activity android:name=".BmiChartOrange" />
-        <activity android:name=".BmiChartRed" />
-        <activity android:name=".BmiChartyellow" />
-        <activity android:name=".EnterBMIINfo" />
         <activity android:name=".About" />
         <activity android:name=".EnterBMIINfo_kgm" />
         <activity
@@ -42,12 +32,8 @@
 
             android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
 
-        <activity android:name=".newactivities.BMrDisplayActivity"
-            android:parentActivityName=".newactivities.SignInActivity">
+        <activity android:name=".newactivities.BMrDisplayActivity">
 
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".newactivities.SignInActivity" />
         </activity>
     </application>
 

@@ -26,13 +26,14 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_BMI = "bmi";
     private static final String KEY_WEIGHT ="weight";
     private static final String KEY_DATETIME = "datetime";
+    private static final String KEY_CALORIES_NEEDED = "caloriesneeded";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_BMILOG_TABLE = "CREATE TABLE "+ TABLE_BMILOGS+ " ( " +KEY_ID+ " INTEGER PRIMARY KEY," +KEY_BMI+ " TEXT,"+KEY_WEIGHT+ " TEXT,"+KEY_DATETIME+ " TEXT"+" )";
+        String CREATE_BMILOG_TABLE = "CREATE TABLE "+ TABLE_BMILOGS+ " ( " +KEY_ID+ " INTEGER PRIMARY KEY," +KEY_BMI+ " TEXT,"+KEY_WEIGHT+" TEXT,"+KEY_CALORIES_NEEDED+ " TEXT,"+KEY_DATETIME+ " TEXT"+" )";
         db.execSQL(CREATE_BMILOG_TABLE);
                 ;
     }
@@ -50,6 +51,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_BMI, log.getBmi()); // Shop Name
         values.put(KEY_WEIGHT, log.getWeight()); // Shop Phone Number
+        values.put(KEY_CALORIES_NEEDED,log.getCalories_needed());
         values.put(KEY_DATETIME, log.getDateTime());
 // Inserting Row
         db.insert(TABLE_BMILOGS, null, values);
@@ -61,7 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public BmiLogs getLog(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BMILOGS, new String[] { KEY_ID,
-                        KEY_BMI, KEY_WEIGHT,KEY_DATETIME }, KEY_ID + "=?",
+                        KEY_BMI, KEY_WEIGHT,KEY_CALORIES_NEEDED,KEY_DATETIME }, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -91,7 +93,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 log.setId(Integer.parseInt(cursor.getString(0)));
                 log.setBmi(cursor.getString(1));
                 log.setWeight(cursor.getString(2));
-                log.setDateTime(cursor.getString(3));
+                log.setCalories_needed(cursor.getString(3));
+                log.setDateTime(cursor.getString(4));
 
 // Adding contact to list
                 logList.add(log);
@@ -112,16 +115,18 @@ public class DBHandler extends SQLiteOpenHelper {
             bmiLog.setId(Integer.parseInt(cursor.getString(0)));
             bmiLog.setBmi(cursor.getString(1));
             bmiLog.setWeight(cursor.getString(2));
-            bmiLog.setDateTime(cursor.getString(3));
+            bmiLog.setCalories_needed(cursor.getString(3));
+            bmiLog.setDateTime(cursor.getString(4));
 
         };
                 return bmiLog;
     }
-    public void updateLastEntry(long rowId, String bmi, String weight, String datetime){
+    public void updateLastEntry(long rowId, String bmi, String weight, String caloriesneeded,String datetime){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put(KEY_BMI,bmi);
         args.put(KEY_WEIGHT, weight);
+        args.put(KEY_CALORIES_NEEDED, caloriesneeded);
         args.put(KEY_DATETIME, datetime);
         db.update(TABLE_BMILOGS,args,"id="+rowId,null);
     }
@@ -142,6 +147,7 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_BMI, log.getBmi());
         values.put(KEY_WEIGHT, log.getWeight());
+        values.put(KEY_CALORIES_NEEDED, log.getCalories_needed());
         values.put(KEY_DATETIME,log.getDateTime());
 // updating row
         return db.update(TABLE_BMILOGS, values, KEY_ID + " = ?",

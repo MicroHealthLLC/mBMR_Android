@@ -27,10 +27,10 @@ import com.microhealthllc.bmr_calculator.R;
 public enum Avatar {
 
     ONE(R.drawable.avatar_1),
-    TWO(R.drawable.avatar_2),
-    THREE(R.drawable.avatar_3),
+    TWO(R.drawable.avatar_10_raster),
+    THREE(R.drawable.avatar_14),
     FOUR(R.drawable.avatar_4),
-    FIVE(R.drawable.avatar_5);
+    FIVE(R.drawable.avatar_13);
 
 
     private static final String TAG = "Avatar";

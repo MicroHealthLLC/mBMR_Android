@@ -9,9 +9,11 @@
     <dimen name="detail_backdrop_height">150dp</dimen>
     <dimen name="activity_horizontalfloat">5dp</dimen>
     <dimen name="detail_backdrop_heightwideforedittext">400dp</dimen>
-    <dimen name="card_margin">1dp</dimen>
+    <dimen name="card_margin">10dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="regular_offset">16dp</dimen>
+    <dimen name="card_margrine">10dp</dimen>
+    <dimen name="card_margrineleftright">5dp</dimen>
 
     <dimen name="activity_horizontal_marginb">8dp</dimen>
     <dimen name="activity_vertical_marginb">8dp</dimen>
@@ -51,7 +53,7 @@
 
     <dimen name="spacing_normal_8dp">8dp</dimen>
     <dimen name="spacing_micro_4dp">4dp</dimen>
-    <dimen name="spacing_large_32dp">32dp</dimen>
+    <dimen name="spacing_large_32dp">25dp</dimen>
     <dimen name="spacing_xlarge_48dp">48dp</dimen>
     <dimen name="spacing_huge_64dp">64dp</dimen>
     <dimen name="padding_normal_16dp">16dp</dimen>
